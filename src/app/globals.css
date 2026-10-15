@@ -49,4 +49,20 @@ body {
   .circle-icon {
     @apply rounded-full flex items-center justify-center;
   }
+
+  .content-mt {
+    @apply mt-[88px];
+  }
+
+  .content-pt {
+    @apply pt-[88px];
+  }
+
+  .content-mx {
+    @apply mx-8;
+  }
+
+  .content-px {
+    @apply px-8;
+  }
 }
