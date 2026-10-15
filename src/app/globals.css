@@ -1,0 +1,52 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css");
+
+@import "tailwindcss";
+
+body {
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  word-break: keep-all;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-neutral-850: oklch(23.5% 0 none);
+  --color-lightcoral: #F08080;
+  --color-cornflowerblue: #6495ED;
+}
+
+@layer base {
+  button, input, textarea {
+    font-family: inherit;
+  }
+
+  input, label, textarea, select {
+    display: block;
+  }
+
+  input, button, select {
+    @apply m-0 p-0 border-0 border-solid;
+  }
+
+  form > label {
+    @apply font-normal;
+  }
+
+  input:not([type="submit"]), textarea, select {
+    @apply w-full box-border px-2 py-1 outline-none rounded-md border dark:border-gray-400 dark:focus:border-white dark:caret-white font-light focus:invalid:border-red-400;
+  }
+
+  option {
+    @apply bg-neutral-200 dark:bg-neutral-850;
+  }
+}
+
+@layer components {
+  .clickable {
+    @apply hover:opacity-75 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 transition-opacity duration-200;
+  }
+
+  .circle-icon {
+    @apply rounded-full flex items-center justify-center;
+  }
+}
