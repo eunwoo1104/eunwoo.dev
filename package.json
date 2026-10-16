@@ -10,11 +10,17 @@
     "format": "prettier --write \"./**/*.{ts,tsx,js,mjs}\""
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.9.1",
+    "argon2": "^0.45.1",
+    "knex": "^3.3.0",
     "motion": "^14.2.0",
+    "mysql2": "^3.24.6",
     "next": "16.4.1",
     "react": "19.3.0",
     "react-dom": "19.3.0",
-    "react-icons": "^5.7.0"
+    "react-hook-form": "^7.90.0",
+    "react-icons": "^5.7.0",
+    "yup": "^1.7.1"
   },
   "devDependencies": {
     "@tailwindcss/turbopack": "^4",

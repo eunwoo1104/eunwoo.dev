@@ -6,8 +6,10 @@ import {
   FaMoon,
   FaSun,
 } from "react-icons/fa";
+import { FaUser, FaUserTag } from "react-icons/fa6";
 import { HiMail, HiOutlineExternalLink } from "react-icons/hi";
 import { IoLanguage } from "react-icons/io5";
+import { MdPassword } from "react-icons/md";
 import {
   SiDiscord,
   SiInstagram,
@@ -26,6 +28,18 @@ export const iconLicenses: Array<IconLicense> = [
     name: "Font Awesome 5",
     license: "CC BY 4.0",
     link: "https://fontawesome.com/",
+  },
+  {
+    id: "fa6",
+    name: "Font Awesome 6",
+    license: "CC BY 4.0",
+    link: "https://fontawesome.com/",
+  },
+  {
+    id: "md",
+    name: "Material Design",
+    license: "Apache License Version 2.0",
+    link: "https://developers.google.com/fonts/docs/material_icons?hl=ko",
   },
   {
     id: "hi",
@@ -54,6 +68,10 @@ export const icons = {
   list: <FaBars />,
   externalLink: <HiOutlineExternalLink />,
   language: <IoLanguage />,
+  email: <HiMail />,
+  password: <MdPassword />,
+  user: <FaUser />,
+  nick: <FaUserTag />,
 
   // Programming Language Logo
   py: <SiPython />,
@@ -63,7 +81,6 @@ export const icons = {
   github: <FaGithub />,
   // Social
   insta: <SiInstagram />,
-  email: <HiMail />,
   linkedin: <FaLinkedin />,
   notion: <SiNotion />,
   discord: <SiDiscord />,

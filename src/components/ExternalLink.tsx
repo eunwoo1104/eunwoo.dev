@@ -5,11 +5,15 @@ export function ExternalLink({
   children,
   icon,
   linkType = "button",
+  className = "",
+  withGap = true,
+  iconOnRight = false,
 }: ExternalLinkProps) {
   if (!icon) icon = icons.externalLink;
-  let aClassName =
-    "inline-flex justify-center items-baseline hover:opacity-75 gap-x-[3px]";
+  let aClassName = "inline-flex justify-center items-baseline hover:opacity-75";
+  if (withGap) aClassName += " gap-x-[3px]";
   if (linkType === "paragraph") aClassName += " underline";
+  if (className) aClassName += " " + className;
   return (
     <a
       href={url}
@@ -17,9 +21,9 @@ export function ExternalLink({
       rel="noopener noreferrer"
       className={aClassName}
     >
-      {linkType === "button" ? null : children}
-      <span className={children ? "relative top-[2px]" : ""}>{icon}</span>
-      {linkType === "button" ? children : null}
+      {iconOnRight ? children : null}
+      <span className={children ? "relative top-0.5" : ""}>{icon}</span>
+      {iconOnRight ? null : children}
     </a>
   );
 }
@@ -29,4 +33,7 @@ interface ExternalLinkProps {
   children?: string | React.ReactNode;
   icon?: React.ReactElement;
   linkType?: "button" | "paragraph";
+  className?: string;
+  withGap?: boolean;
+  iconOnRight?: boolean;
 }
