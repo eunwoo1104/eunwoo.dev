@@ -1,8 +1,10 @@
 "use server";
 
+import { headers } from "next/headers";
 import type { InferType } from "yup";
 import { ValidationError } from "yup";
 
+import { createNewSession } from "@/actions/session";
 import { database } from "@/utils/database";
 import { argon2encrypt, argon2verify } from "@/utils/encryption/argon2";
 import { codes } from "@/utils/response";
@@ -76,36 +78,67 @@ export async function loginUser(
       };
   }
 
-  const userData = await database
+  const fetchedUsers = await database
     .user()
     .select()
     .where("email", validated.email);
-  if (userData.length === 0)
+  if (!fetchedUsers.length)
     return {
       code: codes.notFound,
       msg: "존재하지 않는 이메일입니다.",
     };
 
-  const matched = await argon2verify(userData[0].password, validated.password);
+  const userData = fetchedUsers[0];
+  const matched = await argon2verify(userData.password, validated.password);
   if (!matched)
     return {
       code: codes.authError,
       msg: "비밀번호가 일치하지 않습니다.",
     };
 
-  // TODO: establish session from this point
+  await createNewSession(userData.id);
 
   const user: User = {
-    id: userData[0].id,
-    email: userData[0].email,
-    username: userData[0].username,
-    nickname: userData[0].nickname,
-    createdAt: userData[0].created_at,
-    flags: userData[0].flags,
+    id: userData.id,
+    email: userData.email,
+    username: userData.username,
+    nickname: userData.nickname,
+    createdAt: userData.created_at,
+    flags: userData.flags,
   };
 
   return {
     code: codes.ok,
     data: user,
   };
+}
+
+export async function getUser(userId: number): Promise<ResponseBody<User>> {
+  const fetchedUsers = await database.user().select().where("id", userId);
+  if (!fetchedUsers.length)
+    return {
+      code: codes.notFound,
+      msg: "존재하지 않는 사용자입니다.",
+    };
+
+  const userData = fetchedUsers[0];
+  return {
+    code: codes.ok,
+    data: {
+      id: userData.id,
+      email: userData.email,
+      username: userData.username,
+      nickname: userData.nickname,
+      createdAt: userData.created_at,
+      flags: userData.flags,
+    },
+  };
+}
+
+export async function getCurrentUser(): Promise<ResponseBody<User>> {
+  const reqHeaders = await headers();
+  const userId = reqHeaders.get("EunwooDev-Session-User");
+  if (!userId) return { code: codes.sessionInvalid, msg: "Session invalid" };
+
+  return getUser(Number(userId));
 }

@@ -5,8 +5,8 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 import { HeaderButton } from "@/components/layout/header/HeaderButton";
-import { LinksMenu } from "@/components/layout/header/LinksMenu";
 import { SettingMenu } from "@/components/layout/header/SettingMenu";
+import { SiteMenu } from "@/components/layout/header/SiteMenu";
 import { icons } from "@/utils/icons";
 
 export function Header() {
@@ -61,7 +61,7 @@ export function Header() {
           <HeaderButton onClick={() => changeMenuOpen("setting")}>
             {icons.setting}
           </HeaderButton>
-          <HeaderButton onClick={() => changeMenuOpen("list")}>
+          <HeaderButton onClick={() => changeMenuOpen("site")}>
             {icons.list}
           </HeaderButton>
         </div>
@@ -70,8 +70,8 @@ export function Header() {
         <AnimatePresence>
           {openMenu === "setting" ? (
             <SettingMenu />
-          ) : openMenu === "list" ? (
-            <LinksMenu />
+          ) : openMenu === "site" ? (
+            <SiteMenu />
           ) : null}
         </AnimatePresence>
       </div>

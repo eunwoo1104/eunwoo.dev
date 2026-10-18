@@ -16,3 +16,10 @@ export interface UserTable {
   created_at: Date;
   flags: number;
 }
+
+export interface SessionTable {
+  refresh_token: string;
+  user: number;
+  device_identifier: string;
+  created_at: Date | null;
+}

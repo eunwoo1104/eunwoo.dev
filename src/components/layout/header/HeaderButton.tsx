@@ -10,7 +10,7 @@ export function HeaderButton({
 }: ComponentPropsWithRef<"button">) {
   return (
     <button
-      className={`clickable circle-icon bg-neutral-200 dark:bg-neutral-850 h-10 w-10 ${className}`}
+      className={`clickable circle-icon level-2-bg h-10 w-10 ${className}`}
       onClick={onClick}
       {...props}
     >

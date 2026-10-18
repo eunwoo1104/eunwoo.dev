@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 
 import { Header } from "@/components/layout/header/Header";
+import { SessionProvider } from "@/components/provider/SessionProvider";
 
 import "./globals.css";
 
@@ -30,10 +31,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           dangerouslySetInnerHTML={{ __html: themeScript }}
         />
       </head>
-      <body className="bg-white dark:bg-neutral-900 dark:text-white w-full min-h-screen font-normal text-base">
-        <Header />
-        <div className="content-pt content-px min-h-screen">{children}</div>
-      </body>
+      <SessionProvider>
+        <body className="bg-white dark:bg-neutral-900 dark:text-white w-full min-h-screen font-normal text-base">
+          <Header />
+          <div className="content-pt content-px min-h-screen">{children}</div>
+        </body>
+      </SessionProvider>
     </html>
   );
 }

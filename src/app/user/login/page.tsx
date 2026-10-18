@@ -3,7 +3,7 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
 import type { InferType } from "yup";
@@ -12,9 +12,11 @@ import { loginUser } from "@/actions/user";
 import { ExternalLink } from "@/components/ExternalLink";
 import { MessageBox } from "@/components/MessageBox";
 import { Input } from "@/components/form/Input";
+import { SessionContext } from "@/utils/contexts";
 import { sha256encrypt } from "@/utils/encryption/sha256";
 import { icons } from "@/utils/icons";
 import { codes } from "@/utils/response";
+import type { User } from "@/utils/types";
 import { clientUserLoginSchema } from "@/utils/validation";
 
 export default function Register() {
@@ -31,6 +33,7 @@ export default function Register() {
     resolver: yupResolver(clientUserLoginSchema),
   });
   const router = useRouter();
+  const sessionCtx = useContext(SessionContext);
 
   const onSubmit: SubmitHandler<
     InferType<typeof clientUserLoginSchema>
@@ -48,6 +51,7 @@ export default function Register() {
       // TODO: show success message
       reset();
       setSubmitDisabled(false);
+      sessionCtx?.setUser(response.data as User);
       router.push("/");
     } else {
       setErrorMsg(response.msg as string);
