@@ -7,29 +7,58 @@ import { invalidateSession } from "@/actions/session";
 import { ExternalLink } from "@/components/ExternalLink";
 import { MenuBox } from "@/components/layout/header/MenuBox";
 import { SessionContext } from "@/utils/contexts";
+import type { SessionContextInterface } from "@/utils/contexts";
 import { icons } from "@/utils/icons";
 
-export function SiteMenu() {
-  const sessionCtx = useContext(SessionContext);
-
+function UserProfile({ session }: { session: SessionContextInterface }) {
   const logoutAction = async () => {
     await invalidateSession();
-    sessionCtx?.setUser(null);
+    session?.setUser(null);
   };
 
   return (
-    <MenuBox className="flex flex-col">
-      {sessionCtx?.user ? (
+    <div>
+      <div className="flex flex-row items-center">
+        <div className="rounded-full level-3-bg flex justify-center items-center w-12 h-12">
+          {icons.user}
+        </div>
+        <div className="ml-2">
+          <p>{session.user?.nickname || session.user?.username}</p>
+          <p className="text-neutral-600 dark:text-neutral-400">
+            @{session.user?.username}
+          </p>
+        </div>
+      </div>
+      <div className="h-2" />
+      <div className="flex flex-col space-y-2">
+        <Link
+          href="/user/edit"
+          className="clickable level-3-bg rounded-lg py-1 w-full md:w-48 text-center"
+        >
+          프로필 수정
+        </Link>
         <button
-          className="clickable level-3-bg rounded-lg py-1 w-fit md:w-32 text-center"
+          className="clickable level-3-bg rounded-lg py-1 w-full md:w-48 text-center"
           onClick={logoutAction}
         >
           로그아웃
         </button>
+      </div>
+    </div>
+  );
+}
+
+export function SiteMenu() {
+  const sessionCtx = useContext(SessionContext);
+
+  return (
+    <MenuBox className="flex flex-col">
+      {sessionCtx?.user ? (
+        <UserProfile session={sessionCtx} />
       ) : (
         <Link
           href="/user/login"
-          className="clickable level-3-bg rounded-lg py-1 w-fit md:w-32 text-center"
+          className="clickable level-3-bg rounded-lg py-1 w-full md:w-32 text-center"
         >
           로그인
         </Link>

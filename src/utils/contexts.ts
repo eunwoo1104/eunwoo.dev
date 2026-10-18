@@ -2,7 +2,7 @@ import { createContext } from "react";
 
 import type { User } from "@/utils/types";
 
-interface SessionContextInterface {
+export interface SessionContextInterface {
   user: User | null;
   setUser: (session: User | null) => void;
 }

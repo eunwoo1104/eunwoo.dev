@@ -2,6 +2,7 @@
 
 import { AnimatePresence } from "motion/react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 import { HeaderButton } from "@/components/layout/header/HeaderButton";
@@ -13,6 +14,7 @@ export function Header() {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const menuRef = useRef<HTMLDivElement | null>(null);
   const menuButtonsRef = useRef<HTMLDivElement | null>(null);
+  const pathname = usePathname();
 
   const changeMenuOpen = (menu: string) => {
     if (openMenu == menu) {
@@ -42,6 +44,11 @@ export function Header() {
       document.removeEventListener("pointerdown", handlePointerDown);
     };
   }, [openMenu]);
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setOpenMenu(null);
+  }, [pathname]);
 
   return (
     <div>
