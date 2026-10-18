@@ -1,6 +1,5 @@
 "use client";
 
-import { registerUser } from "@/actions/user";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -8,6 +7,7 @@ import { useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
 import type { InferType } from "yup";
 
+import { registerUser } from "@/actions/user";
 import { ExternalLink } from "@/components/ExternalLink";
 import { MessageBox } from "@/components/MessageBox";
 import { Input } from "@/components/form/Input";
@@ -22,6 +22,7 @@ export default function Register() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     mode: "onChange",
@@ -45,6 +46,8 @@ export default function Register() {
     const response = await registerUser(requestBody);
     if (response.code == codes.ok) {
       // TODO: show success message & open login menu
+      reset();
+      setSubmitDisabled(false);
       router.push("/");
     } else {
       setErrorMsg(response.msg as string);
@@ -141,7 +144,7 @@ export default function Register() {
         <input
           className="clickable bg-neutral-200 dark:bg-neutral-800 rounded-lg w-full py-3 mt-5"
           type="submit"
-          value="Register"
+          value="회원가입"
           disabled={submitDisabled}
         />
       </form>
