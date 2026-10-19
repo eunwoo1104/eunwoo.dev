@@ -1,6 +1,7 @@
 import {
   FaBars,
   FaChevronDown,
+  FaCode,
   FaCog,
   FaGithub,
   FaLinkedin,
@@ -10,7 +11,7 @@ import {
 } from "react-icons/fa";
 import { FaUser, FaUserTag } from "react-icons/fa6";
 import { HiMail, HiOutlineExternalLink } from "react-icons/hi";
-import { IoLanguage } from "react-icons/io5";
+import { IoDocumentLockOutline, IoLanguage } from "react-icons/io5";
 import { MdPassword } from "react-icons/md";
 import {
   SiDiscord,
@@ -76,6 +77,8 @@ export const icons = {
   nick: <FaUserTag />,
   chevronDown: <FaChevronDown />,
   circleCheck: <FaRegCheckCircle />,
+  privacy: <IoDocumentLockOutline />,
+  code: <FaCode />,
 
   // Programming Language Logo
   py: <SiPython />,

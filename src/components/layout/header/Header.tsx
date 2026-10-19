@@ -57,7 +57,7 @@ export function Header() {
                    flex flex-row items-center transition-colors duration-300
                    before:absolute before:inset-0 before:-z-10 before:backdrop-blur-xs before:mask-[linear-gradient(to_bottom,black_65%,transparent)]"
       >
-        <Link href="/" className="font-bold text-2xl clickable">
+        <Link href="/" className="font-bold text-2xl clickable rounded-lg py-1">
           eunwoo.dev
         </Link>
         <div className="flex-1" />

@@ -60,11 +60,11 @@ body {
   }
 
   .content-mx {
-    @apply mx-8;
+    @apply mx-8 md:mx-20 lg:mx-44 xl:mx-52 2xl:mx-64;
   }
 
   .content-px {
-    @apply px-8;
+    @apply px-8 md:px-20 lg:px-44 xl:px-52 2xl:px-64;
   }
 
   .level-1-bg {

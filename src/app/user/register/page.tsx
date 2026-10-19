@@ -56,7 +56,7 @@ export default function Register() {
   };
 
   return (
-    <div className="w-full md:px-20 lg:px-44 xl:px-52 2xl:px-64">
+    <div className="w-full">
       <h1 className="text-left font-bold text-3xl pt-8 pb-1">환영해요!</h1>
       <p className="font-light text-neutral-700 dark:text-neutral-400 pb-4">
         여기서 eunwoo.dev 웹페이지에 회원가입할 수 있어요.

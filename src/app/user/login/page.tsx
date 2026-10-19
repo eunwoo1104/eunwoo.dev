@@ -72,7 +72,7 @@ export default function Register({
   };
 
   return (
-    <div className="w-full md:px-20 lg:px-44 xl:px-52 2xl:px-64">
+    <div className="w-full">
       <h1 className="text-left font-bold text-3xl pt-8 pb-1">
         돌아오신 것을 환영해요!
       </h1>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 
+import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/header/Header";
 import { GlobalMessageProvider } from "@/components/provider/GlobalMessageProvider";
 import { SessionProvider } from "@/components/provider/SessionProvider";
@@ -36,7 +37,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <body className="level-1-bg w-full min-h-screen font-normal text-base">
           <GlobalMessageProvider>
             <Header />
-            <div className="content-pt content-px min-h-screen">{children}</div>
+            <div className="content-pt content-px min-h-[calc(100dvh-7rem)]">
+              {children}
+            </div>
+            <Footer />
           </GlobalMessageProvider>
         </body>
       </SessionProvider>
