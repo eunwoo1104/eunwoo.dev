@@ -1,5 +1,5 @@
+import { MessageBox } from "@/components/MessageBox";
 import { icons } from "@/utils/icons";
-import {MessageBox} from "@/components/MessageBox";
 
 export default function OpenSource() {
   return (
@@ -8,15 +8,15 @@ export default function OpenSource() {
       <p>
         eunwoo.dev 웹페이지는 여러 멋진 오픈소스 프로젝트 덕분에 만들어졌습니다.
       </p>
-      <h2 className="text-xl font-semibold">
-        프로젝트 정보
-      </h2>
+      <h2 className="text-xl font-semibold">프로젝트 정보</h2>
       <p>License: MIT</p>
       <div className="flex flex-row items-center space-x-1">
         <p>Powered by </p>
         {icons.nextjs} {icons.react} {icons.tailwind}
       </div>
-      <MessageBox type="info" title="준비중">해당 페이지는 아직 준비중입니다...</MessageBox>
+      <MessageBox type="info" title="준비중">
+        해당 페이지는 아직 준비중입니다...
+      </MessageBox>
     </div>
   );
 }

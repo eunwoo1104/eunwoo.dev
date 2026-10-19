@@ -15,6 +15,13 @@ import { userLoginSchema, userRegistrationSchema } from "@/utils/validation";
 export async function registerUser(
   data: InferType<typeof userRegistrationSchema>,
 ): Promise<ResponseBody<string[] | null>> {
+  if (process.env.LOGIN_ALLOWED != "true") {
+    return {
+      code: codes.validError,
+      msg: "로그인 기능이 비활성화 되었습니다.",
+    };
+  }
+
   let validated;
   try {
     validated = await userRegistrationSchema.validate(data);
@@ -61,6 +68,13 @@ export async function registerUser(
 export async function loginUser(
   data: InferType<typeof userLoginSchema>,
 ): Promise<ResponseBody<User | string[] | null>> {
+  if (process.env.LOGIN_ALLOWED != "true") {
+    return {
+      code: codes.validError,
+      msg: "로그인 기능이 비활성화 되었습니다.",
+    };
+  }
+
   let validated;
   try {
     validated = await userLoginSchema.validate(data);
