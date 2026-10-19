@@ -7,6 +7,10 @@ export interface User {
   flags: number;
 }
 
+export const enum UserFlags {
+  OWNER = 1 << 0,
+}
+
 export interface UserTable {
   id: number;
   email: string;
@@ -22,4 +26,11 @@ export interface SessionTable {
   user: number;
   device_identifier: string;
   created_at: Date | null;
+}
+
+export interface IntroLinkTable {
+  name: string;
+  type: string;
+  url: string;
+  external: boolean;
 }

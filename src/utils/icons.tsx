@@ -1,5 +1,6 @@
 import {
   FaBars,
+  FaChevronDown,
   FaCog,
   FaGithub,
   FaLinkedin,
@@ -72,6 +73,7 @@ export const icons = {
   password: <MdPassword />,
   user: <FaUser />,
   nick: <FaUserTag />,
+  chevronDown: <FaChevronDown />,
 
   // Programming Language Logo
   py: <SiPython />,

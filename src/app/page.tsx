@@ -1,12 +1,24 @@
-import { Intro } from "@/components/animated/Intro";
+import { About } from "@/components/intro/About";
+import { HelloWithNextScroll } from "@/components/intro/HelloWithNextScroll";
+import { LinksContainer } from "@/components/intro/links/LinksContainer";
 
 export default function Home() {
   return (
     <div>
-      <div className="min-h-[calc(100dvh-88px)] flex flex-col items-center justify-center">
-        <Intro />
-        <div className="h-32" />
+      <HelloWithNextScroll>
+        <About />
+      </HelloWithNextScroll>
+      <div className="">
+        <h2 className="text-xl font-semibold">Skills</h2>
+        <h3 className="text-lg font-light">
+          풀스택 개발부터 배포 및 서버 구축까지 모두 경험해봤습니다.
+        </h3>
       </div>
+      <div>
+        <h2 className="text-xl font-semibold">Projects</h2>
+        <p>insert project box here</p>
+      </div>
+      <LinksContainer />
     </div>
   );
 }

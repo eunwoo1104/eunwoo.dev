@@ -1,7 +1,7 @@
 import knex from "knex";
 import "server-only";
 
-import type { SessionTable, UserTable } from "@/utils/types";
+import type { IntroLinkTable, SessionTable, UserTable } from "@/utils/types";
 
 const connection = knex({
   client: "mysql2",
@@ -17,6 +17,7 @@ const connection = knex({
 export const database = {
   user: () => connection<UserTable>("user"),
   session: () => connection<SessionTable>("session"),
+  introLink: () => connection<IntroLinkTable>("intro_link"),
 };
 
 export default connection;

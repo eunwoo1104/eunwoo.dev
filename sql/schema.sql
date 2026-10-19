@@ -19,3 +19,10 @@ CREATE TABLE IF NOT EXISTS session (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user) REFERENCES user(id) ON DELETE CASCADE
 );
+
+CREATE TABLE IF NOT EXISTS intro_link (
+    name VARCHAR(32) UNIQUE,
+    type VARCHAR(32),
+    url VARCHAR(128),
+    external BOOLEAN default true
+)
