@@ -5,6 +5,7 @@ import {
   FaGithub,
   FaLinkedin,
   FaMoon,
+  FaRegCheckCircle,
   FaSun,
 } from "react-icons/fa";
 import { FaUser, FaUserTag } from "react-icons/fa6";
@@ -74,6 +75,7 @@ export const icons = {
   user: <FaUser />,
   nick: <FaUserTag />,
   chevronDown: <FaChevronDown />,
+  circleCheck: <FaRegCheckCircle />,
 
   // Programming Language Logo
   py: <SiPython />,

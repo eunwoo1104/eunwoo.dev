@@ -12,7 +12,7 @@ import { loginUser } from "@/actions/user";
 import { ExternalLink } from "@/components/ExternalLink";
 import { MessageBox } from "@/components/MessageBox";
 import { Input } from "@/components/form/Input";
-import { SessionContext } from "@/utils/contexts";
+import { GlobalMessageContext, SessionContext } from "@/utils/contexts";
 import { sha256encrypt } from "@/utils/encryption/sha256";
 import { icons } from "@/utils/icons";
 import { codes } from "@/utils/response";
@@ -38,6 +38,7 @@ export default function Register({
   });
   const router = useRouter();
   const sessionCtx = useContext(SessionContext);
+  const globalMsgCtx = useContext(GlobalMessageContext);
 
   const onSubmit: SubmitHandler<
     InferType<typeof clientUserLoginSchema>
@@ -57,6 +58,11 @@ export default function Register({
       reset();
       setSubmitDisabled(false);
       sessionCtx?.setUser(response.data as User);
+      globalMsgCtx?.addMessage({
+        title: "로그인 성공!",
+        type: "success",
+        icon: icons.circleCheck,
+      });
       const toRedirect = paramRes.redirect || "";
       router.push(`/${toRedirect}`);
     } else {

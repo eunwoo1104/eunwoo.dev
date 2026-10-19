@@ -3,6 +3,7 @@ export function MessageBox({
   title,
   children,
   className,
+  icon,
   titleClassName,
   ...props
 }: MessageBoxProps) {
@@ -30,7 +31,16 @@ export function MessageBox({
       className={`rounded-lg w-full p-4 ${boxColor} ` + (className || "")}
       {...props}
     >
-      <p className={"text-xl font-bold" + (titleClassName || "")}>{title}</p>
+      <p
+        className={
+          "text-xl font-bold " +
+          (icon ? "inline-flex justify-center items-baseline " : "") +
+          (titleClassName || "")
+        }
+      >
+        {icon && <span className="relative top-[3px] mr-1">{icon}</span>}
+        {title}
+      </p>
       {children}
     </div>
   );
@@ -39,5 +49,6 @@ export function MessageBox({
 export interface MessageBoxProps extends React.HTMLProps<HTMLDivElement> {
   type: "info" | "success" | "warn" | "error" | "none";
   title: string;
+  icon?: React.ReactNode;
   titleClassName?: string;
 }

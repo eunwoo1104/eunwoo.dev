@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 
 import { Header } from "@/components/layout/header/Header";
+import { GlobalMessageProvider } from "@/components/provider/GlobalMessageProvider";
 import { SessionProvider } from "@/components/provider/SessionProvider";
 
 import "./globals.css";
@@ -33,8 +34,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       </head>
       <SessionProvider>
         <body className="level-1-bg w-full min-h-screen font-normal text-base">
-          <Header />
-          <div className="content-pt content-px min-h-screen">{children}</div>
+          <GlobalMessageProvider>
+            <Header />
+            <div className="content-pt content-px min-h-screen">{children}</div>
+          </GlobalMessageProvider>
         </body>
       </SessionProvider>
     </html>
