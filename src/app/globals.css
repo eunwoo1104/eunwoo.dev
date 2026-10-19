@@ -40,6 +40,14 @@ body {
   option {
     @apply bg-neutral-200 dark:bg-neutral-850;
   }
+
+  ol > li {
+    @apply ml-4;
+  }
+
+  th, tr, td {
+    @apply p-2 text-center;
+  }
 }
 
 @layer components {

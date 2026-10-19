@@ -19,6 +19,8 @@ import {
   SiNextdotjs,
   SiNotion,
   SiPython,
+  SiReact,
+  SiTailwindcss,
   SiTypescript,
   SiUptimekuma,
   SiYoutube,
@@ -86,6 +88,8 @@ export const icons = {
   // Tech Stack Logo
   nextjs: <SiNextdotjs />,
   github: <FaGithub />,
+  react: <SiReact />,
+  tailwind: <SiTailwindcss />,
   // Social
   insta: <SiInstagram />,
   linkedin: <FaLinkedin />,
