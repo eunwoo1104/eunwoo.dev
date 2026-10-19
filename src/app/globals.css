@@ -14,6 +14,10 @@ body {
   --color-neutral-150: oklch(93.5% 0 none);
   --color-lightcoral: #F08080;
   --color-cornflowerblue: #6495ED;
+  --color-konkuk-green: #005426;
+  --color-sahmyook-blue: #102C68;
+  --color-koreanlist-blue: #3366FF;
+  --color-discord-blurple: #5865F2;
 }
 
 @layer base {
