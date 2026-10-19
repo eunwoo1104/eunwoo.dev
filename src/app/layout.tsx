@@ -32,7 +32,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         />
       </head>
       <SessionProvider>
-        <body className="bg-white dark:bg-neutral-900 dark:text-white w-full min-h-screen font-normal text-base">
+        <body className="level-1-bg w-full min-h-screen font-normal text-base">
           <Header />
           <div className="content-pt content-px min-h-screen">{children}</div>
         </body>

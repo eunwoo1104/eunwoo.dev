@@ -19,7 +19,11 @@ import { codes } from "@/utils/response";
 import type { User } from "@/utils/types";
 import { clientUserLoginSchema } from "@/utils/validation";
 
-export default function Register() {
+export default function Register({
+  searchParams,
+}: {
+  searchParams: Promise<{ redirect?: string }>;
+}) {
   const [submitDisabled, setSubmitDisabled] = useState<boolean>(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const {
@@ -48,11 +52,13 @@ export default function Register() {
 
     const response = await loginUser(requestBody);
     if (response.code == codes.ok) {
+      const paramRes = await searchParams;
       // TODO: show success message
       reset();
       setSubmitDisabled(false);
       sessionCtx?.setUser(response.data as User);
-      router.push("/");
+      const toRedirect = paramRes.redirect || "";
+      router.push(`/${toRedirect}`);
     } else {
       setErrorMsg(response.msg as string);
       setSubmitDisabled(false);
