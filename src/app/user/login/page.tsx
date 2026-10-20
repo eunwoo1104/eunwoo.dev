@@ -19,7 +19,7 @@ import { codes } from "@/utils/response";
 import type { User } from "@/utils/types";
 import { clientUserLoginSchema } from "@/utils/validation";
 
-export default function Register({
+export default function Login({
   searchParams,
 }: {
   searchParams: Promise<{ redirect?: string }>;
@@ -113,7 +113,7 @@ export default function Register({
           errors={errors}
           required={true}
           placeholder="password"
-          autoComplete="new-password"
+          autoComplete="current-password"
           icon={icons.password}
         />
         {errorMsg && (
