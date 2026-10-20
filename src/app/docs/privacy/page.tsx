@@ -4,8 +4,8 @@ import { icons } from "@/utils/icons";
 export default function Privacy() {
   return (
     <div>
-      <h1 className="text-3xl font-bold mb-2">개인정보처리방침</h1>
-      <h2 className="text-xl font-semibold mt-2">개인정보 처리 목적</h2>
+      <h1 className="mb-2">개인정보처리방침</h1>
+      <h2 className="mt-2">개인정보 처리 목적</h2>
       <p>당사는 다음의 목적을 위하여 사용자의 정보를 처리합니다.</p>
       <ol className="list-decimal my-1">
         <li>
@@ -16,7 +16,7 @@ export default function Privacy() {
       <p>
         개인정보 수집 목적이 변경되는 경우, 사용자에게 변경 사항을 통지합니다.
       </p>
-      <h2 className="text-xl font-semibold mt-2">개인정보 보유 및 사용기간</h2>
+      <h2 className="mt-2">개인정보 보유 및 사용기간</h2>
       <p>
         당사는 사용자로부터 동의 받은 사용기간 내에서 개인정보를 보유 및 사용할
         수 있습니다.
@@ -30,7 +30,7 @@ export default function Privacy() {
         <li>서비스 제공 관련 개인정보 — 서비스 탈퇴까지.</li>
         <li>민원 관련 개인정보 — 민원이 처리된 후 최대 30일까지.</li>
       </ol>
-      <h2 className="text-xl font-semibold mt-2">사용자의 권리</h2>
+      <h2 className="mt-2">사용자의 권리</h2>
       <p>
         사용자는 언제든지 서면, 전자우편 등을 통해 권리 행사를 할 수 있습니다.
       </p>
@@ -78,7 +78,7 @@ export default function Privacy() {
           에 따라 사용자의 일부 권리가 제한될 수 있습니다.
         </li>
       </ol>
-      <h2 className="text-xl font-semibold mt-2">개인정보의 안전성</h2>
+      <h2 className="mt-2">개인정보의 안전성</h2>
       <p>
         당사는 개인정보를 안전하게 보관하기 위해 다음과 같은 조치를 취합니다.
       </p>
@@ -93,7 +93,7 @@ export default function Privacy() {
           접근할 수 있는 안전한 장소에 보관합니다.
         </li>
       </ol>
-      <h2 className="text-xl font-semibold mt-2">개인정보 보호책임자</h2>
+      <h2 className="mt-2">개인정보 보호책임자</h2>
       <p>
         당사는 개인정보 처리에 관련한 업무를 위해 다음과 같은 개인정보 보호
         책임자를 임명합니다.
@@ -112,7 +112,7 @@ export default function Privacy() {
           choi@eunwoo.dev
         </ExternalLink>
       </p>
-      <h2 className="text-xl font-semibold mt-2">권익침해에 대한 구제방법</h2>
+      <h2 className="mt-2">권익침해에 대한 구제방법</h2>
       <p>
         사용자는 권익침해로부터 구제 받기 위해 다음과 같은 기관에 상담을 신청할
         수 있습니다.
@@ -139,15 +139,13 @@ export default function Privacy() {
           </ExternalLink>
         </li>
       </ol>
-      <h2 className="text-xl font-semibold mt-2">
-        개인정보 처리방침 변경 시 고지 의무
-      </h2>
+      <h2 className="mt-2">개인정보 처리방침 변경 시 고지 의무</h2>
       <p>
         개인정보 처리방침의 변경이 있는 경우 시행 7일 전 사전에 이용자에게
         고지합니다.
       </p>
-      <h2 className="text-xl font-semibold mt-2">수집한 개인정보의 위탁</h2>
-      <table className="border my-1">
+      <h2 className="mt-2">수집한 개인정보의 위탁</h2>
+      <table className="border my-1 w-full">
         <thead className="level-3-bg border-b">
           <tr>
             <th scope="col">위탁업체</th>
@@ -173,7 +171,7 @@ export default function Privacy() {
           </tr>
         </tbody>
       </table>
-      <h2 className="text-xl font-semibold mt-2">개인정보 처리방침의 변경</h2>
+      <h2 className="mt-2">개인정보 처리방침의 변경</h2>
       <p>본 개인정보 처리방침은 2026년 10월 19일부터 효력을 가집니다.</p>
       <div className="h-2" />
     </div>

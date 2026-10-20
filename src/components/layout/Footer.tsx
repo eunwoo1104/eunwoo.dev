@@ -5,7 +5,7 @@ import { icons } from "@/utils/icons";
 
 export function Footer() {
   return (
-    <footer className="flex flex-row content-px h-28 level-2-bg items-center text-sm">
+    <footer className="flex flex-row content-px h-28 level-2-bg items-center">
       <div className="flex flex-col justify-center">
         <Link
           href="/"
@@ -16,7 +16,7 @@ export function Footer() {
         <p className="text-sm font-extralight">
           © 2026 Eunwoo Choi, All rights reserved.
         </p>
-        <div className="h-1" />
+        <div className="h-1.5" />
         <div className="flex flex-row justify-start items-center gap-x-3">
           <ExternalLink
             url="mailto:choi@eunwoo.dev"
@@ -46,20 +46,20 @@ export function Footer() {
         </div>
       </div>
       <div className="flex-1" />
-      <div className="flex flex-col">
-        <p className="font-semibold">문서</p>
+      <div className="flex flex-col justify-center">
+        <p className="font-bold">문서</p>
         <Link
           href="/docs/privacy"
           className="flex flex-row font-light clickable"
         >
-          <span className="relative top-0.5 mr-1">{icons.privacy}</span>{" "}
+          <span className="relative top-[3px] mr-1">{icons.privacy}</span>{" "}
           개인정보처리방침
         </Link>
         <Link
           href="/docs/open-source"
           className="flex flex-row font-light clickable"
         >
-          <span className="relative top-0.5 mr-1">{icons.code}</span> 오픈소스
+          <span className="relative top-[3px] mr-1">{icons.code}</span> 오픈소스
           정보
         </Link>
       </div>

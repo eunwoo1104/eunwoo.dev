@@ -11,9 +11,11 @@ export function Hello({ chevronOnClick }: { chevronOnClick: () => void }) {
       <motion.div
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0, transition: { duration: 0.5 } }}
-        className="flex flex-row text-4xl xs:text-5xl lg:text-6xl font-extrabold space-x-1"
+        className="flex flex-row font-extrabold space-x-1"
       >
-        <h1 className="text-center">Hello, World!</h1>
+        <h1 className="text-center text-4xl xs:text-5xl lg:text-6xl">
+          Hello, World!
+        </h1>
         <motion.h1
           animate={{
             rotate: [0, -30, 45, 0],

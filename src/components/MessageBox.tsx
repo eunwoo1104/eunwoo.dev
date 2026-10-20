@@ -10,16 +10,16 @@ export function MessageBox({
   let boxColor;
   switch (type) {
     case "info":
-      boxColor = "bg-cornflowerblue text-blue-900 dark:text-blue-50";
+      boxColor = "bg-cornflowerblue text-blue-900";
       break;
     case "success":
-      boxColor = "bg-green-400 text-green-900 dark:text-green-50";
+      boxColor = "bg-green-400 text-green-900";
       break;
     case "warn":
-      boxColor = "bg-orange-300 text-orange-900 dark:text-orange-50";
+      boxColor = "bg-orange-300 text-orange-900";
       break;
     case "error":
-      boxColor = "bg-lightcoral text-red-900 dark:text-red-50";
+      boxColor = "bg-lightcoral text-red-900";
       break;
     default:
       boxColor = "";

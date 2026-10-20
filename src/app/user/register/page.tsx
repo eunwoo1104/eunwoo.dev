@@ -57,8 +57,8 @@ export default function Register() {
 
   return (
     <div className="w-full">
-      <h1 className="text-left font-bold text-3xl pt-8 pb-1">환영해요!</h1>
-      <p className="font-light text-neutral-700 dark:text-neutral-400 pb-4">
+      <h1 className="text-left pt-8 pb-1">환영해요!</h1>
+      <p className="font-light subtext pb-4">
         여기서 eunwoo.dev 웹페이지에 회원가입할 수 있어요.
         <br />
         도움이 필요한 경우{" "}
@@ -66,7 +66,7 @@ export default function Register() {
           icon={icons.email}
           url="mailto:choi@eunwoo.dev"
           linkType="paragraph"
-          className="text-neutral-850 dark:text-neutral-300"
+          className="subtext-2"
           withGap={false}
         >
           관리자

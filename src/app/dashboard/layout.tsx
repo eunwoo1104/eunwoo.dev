@@ -24,7 +24,7 @@ export default async function DashboardLayout({
   if (!(user.data.flags & UserFlags.OWNER)) {
     return (
       <div className="min-h-[calc(100dvh-88px)] flex flex-col items-center justify-center">
-        <h1 className="text-5xl font-bold">권한이 없습니다.</h1>
+        <h1 className="text-5xl">권한이 없습니다.</h1>
         <div className="h-4" />
         <Link href="/" className="level-2-bg rounded-lg p-4 text-lg">
           홈으로 돌아가기

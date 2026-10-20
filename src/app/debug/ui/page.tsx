@@ -23,8 +23,8 @@ export default function UITest() {
 
   return (
     <div>
-      <h1 className="font-bold text-4xl">UI Testing area</h1>
-      <div className="my-4 h-[1px] w-full bg-neutral-700" />
+      <h1>UI Testing area</h1>
+      <div className="my-4 divider" />
       <p>Example text</p>
       <MessageBox
         type={boxType}
@@ -66,10 +66,12 @@ export default function UITest() {
       >
         클릭해서 글로벌 메시지 생성하기
       </button>
-      <div className="my-4 h-[1px] w-full bg-neutral-700" />
-      <h2 className="font-bold text-3xl">MessageBox Color Palette</h2>
-      <p className="font-light text-neutral-400">
+      <div className="my-4 divider" />
+      <h2>MessageBox Color Palette</h2>
+      <p className="font-light subtext">
         Imported from SamNet source code
+        <br />
+        dark: does not apply anymore
       </p>
       <MessageBox
         type="info"
@@ -126,7 +128,7 @@ export default function UITest() {
         title="bg-springgreen [#00FF7F]"
         className="my-1 bg-[#00FF7F]"
       />
-      <h1 className="font-bold text-4xl">Very Long Paragraph</h1>
+      <h2>Very Long Paragraph</h2>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dictum
         auctor erat et eleifend. Pellentesque non orci vehicula, molestie nisi

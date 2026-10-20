@@ -1,14 +1,12 @@
 export function About() {
   return (
     <div>
-      <h2 className="text-xl font-semibold">About me</h2>
-      <h3 className="text-lg font-light">
-        현재 건국대학교에서 컴퓨터공학을 전공하고 있습니다.
-      </h3>
+      <h2>About me</h2>
+      <h4>현재 건국대학교에서 컴퓨터공학을 전공하고 있습니다.</h4>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
         <div className="level-2-bg rounded-lg p-4 border-2 border-konkuk-green">
           <p>건국대학교 컴퓨터공학부</p>
-          <p>학사, 2025.03 ~ 현재</p>
+          <p className="subtext">학사, 2025.03 ~ 현재</p>
         </div>
         <div className="level-2-bg rounded-lg p-4 border-2 border-sahmyook-blue">
           <p>삼육대학교 컴퓨터공학부</p>

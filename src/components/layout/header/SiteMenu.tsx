@@ -24,9 +24,7 @@ function UserProfile({ session }: { session: SessionContextInterface }) {
         </div>
         <div className="ml-2">
           <p>{session.user?.nickname || session.user?.username}</p>
-          <p className="text-neutral-600 dark:text-neutral-400">
-            @{session.user?.username}
-          </p>
+          <p className="subtext">@{session.user?.username}</p>
         </div>
       </div>
       <div className="h-2" />
@@ -63,7 +61,7 @@ export function SiteMenu() {
           로그인
         </Link>
       )}
-      <div className="my-4 h-[1px] w-full bg-neutral-700" />
+      <div className="my-4 divider" />
       <div className="flex flex-col justify-center items-start space-y-0.5">
         <ExternalLink url="https://status.eunwoo.dev/" icon={icons.uptime}>
           업타임

@@ -21,7 +21,7 @@ export default function NotFound() {
   return (
     <div>
       <div className="min-h-[calc(100dvh-88px-7rem)] flex flex-col items-center justify-center">
-        <h1 className="text-5xl font-bold">! ! 404 ! !</h1>
+        <h1 className="text-5xl">! ! 404 ! !</h1>
         <p className={`text-lg text-center ${msg ? "" : "invisible"}`}>
           {msg || "&nbsp;"}
         </p>

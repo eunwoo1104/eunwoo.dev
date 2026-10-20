@@ -73,16 +73,14 @@ export default function Login({
 
   return (
     <div className="w-full">
-      <h1 className="text-left font-bold text-3xl pt-8 pb-1">
-        돌아오신 것을 환영해요!
-      </h1>
-      <p className="font-light text-neutral-700 dark:text-neutral-400 pb-4">
+      <h1 className="text-left pt-8 pb-1">돌아오신 것을 환영해요!</h1>
+      <p className="font-light subtext pb-4">
         도움이 필요한 경우{" "}
         <ExternalLink
           icon={icons.email}
           url="mailto:choi@eunwoo.dev"
           linkType="paragraph"
-          className="text-neutral-850 dark:text-neutral-300"
+          className="subtext-2"
           withGap={false}
         >
           관리자
@@ -134,12 +132,9 @@ export default function Login({
         />
       </form>
       <div className="h-2" />
-      <p className="font-light text-neutral-700 dark:text-neutral-400">
+      <p className="font-light subtext">
         아직 계정이 없나요?{" "}
-        <Link
-          href="/user/register"
-          className="clickable text-neutral-850 dark:text-neutral-300 underline"
-        >
+        <Link href="/user/register" className="clickable underline subtext-2">
           여기서 회원가입할 수 있어요.
         </Link>
       </p>

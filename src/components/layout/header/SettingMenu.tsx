@@ -29,14 +29,14 @@ export function SettingMenu() {
     );
   }, [selectedTheme]);
 
+  const getCurrentTheme = () =>
+    selectedTheme !== "system" ? selectedTheme : getSystemTheme();
+
   return (
     <MenuBox className="md:w-fit space-y-2">
-      <div className="font-bold text-sm text-neutral-600 dark:text-neutral-400 flex flex-row items-center space-x-1">
+      <div className="font-bold text-sm subtext flex flex-row items-center space-x-1">
         <div className="inline-block">
-          {selectedTheme === "dark" ||
-          (selectedTheme === "system" && getSystemTheme() === "dark")
-            ? icons.dark
-            : icons.light}
+          {getCurrentTheme() === "dark" ? icons.dark : icons.light}
         </div>
         <p>테마 설정</p>
       </div>
@@ -65,7 +65,7 @@ export function SettingMenu() {
           }
         />
       </div>
-      <div className="font-bold text-sm text-neutral-600 dark:text-neutral-400 flex flex-row items-center space-x-1">
+      <div className="font-bold text-sm subtext flex flex-row items-center space-x-1">
         <div className="inline-block">{icons.language}</div>
         <p>언어 설정</p>
       </div>

@@ -9,13 +9,13 @@ export default function Home() {
         <About />
       </HelloWithNextScroll>
       <div className="">
-        <h2 className="text-xl font-semibold">Skills</h2>
+        <h2>Skills</h2>
         <h3 className="text-lg font-light">
           풀스택 개발부터 배포 및 서버 구축까지 모두 경험해봤습니다.
         </h3>
       </div>
       <div>
-        <h2 className="text-xl font-semibold">Projects</h2>
+        <h2>Projects</h2>
         <p>insert project box here</p>
       </div>
       <LinksContainer />

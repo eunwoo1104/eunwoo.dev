@@ -38,7 +38,7 @@ body {
   }
 
   input:not([type="submit"]), textarea, select {
-    @apply w-full box-border px-2 py-1 outline-none rounded-md border dark:border-gray-400 dark:focus:border-white dark:caret-white font-light focus:invalid:border-red-400;
+    @apply w-full box-border px-2 py-1 outline-none rounded-md border border-black dark:border-gray-400 dark:focus:border-white dark:caret-white font-light focus:invalid:border-red-400;
   }
 
   option {
@@ -52,6 +52,22 @@ body {
   th, tr, td {
     @apply p-2 text-center;
   }
+
+  h1 {
+    @apply text-4xl font-bold;
+  }
+
+  h2 {
+    @apply text-2xl font-semibold;
+  }
+
+  h3 {
+    @apply text-xl font-semibold;
+  }
+
+  h4 {
+    @apply text-lg;
+  }
 }
 
 @layer components {
@@ -61,6 +77,10 @@ body {
 
   .circle-icon {
     @apply rounded-full flex items-center justify-center;
+  }
+
+  .divider {
+    @apply h-[1px] w-full bg-neutral-700;
   }
 
   .content-mt {
@@ -89,5 +109,13 @@ body {
 
   .level-3-bg {
     @apply bg-neutral-150 dark:bg-neutral-800;
+  }
+
+  .subtext {
+    @apply text-neutral-700 dark:text-neutral-400;
+  }
+
+  .subtext-2 {
+    @apply text-neutral-850 dark:text-neutral-300;
   }
 }

@@ -5,7 +5,7 @@ import { icons } from "@/utils/icons";
 export default function Docs() {
   return (
     <div className="text-lg">
-      <h1 className="text-3xl font-bold">문서 목록</h1>
+      <h1>문서 목록</h1>
       <div className="h-2" />
       <Link href="/docs/privacy" className="clickable flex flex-row">
         <span className="relative top-0.5 mr-1">{icons.privacy}</span>{" "}

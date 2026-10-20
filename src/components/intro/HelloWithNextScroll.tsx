@@ -21,10 +21,9 @@ export function HelloWithNextScroll({
           }}
         />
         <div className="h-32" />
+        <div ref={nextRef} />
       </div>
-      <div className="h-screen scroll-mt-[88px]" ref={nextRef}>
-        {children}
-      </div>
+      <div className="min-h-screen scroll-mt-[88px]">{children}</div>
     </div>
   );
 }
