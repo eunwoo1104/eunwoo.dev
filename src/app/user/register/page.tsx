@@ -1,6 +1,7 @@
 "use client";
 
 import { yupResolver } from "@hookform/resolvers/yup";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -130,10 +131,20 @@ export default function Register() {
           placeholder="닉네임 (선택)"
           icon={icons.nick}
         />
-        {/* TODO: add ToS and Privacy Policy confirm */}
+        <p className="flex flex-row items-center subtext mt-4">
+          회원가입 시{" "}
+          <Link
+            href="/docs/privacy"
+            className="flex flex-row subtext-2 clickable underline ml-1"
+          >
+            <span className="relative top-[3px]">{icons.privacy}</span>
+            개인정보처리방침
+          </Link>
+          에 동의하는 것으로 간주해요.
+        </p>
         {errorMsg && (
           <MessageBox
-            className="mt-5 clickable"
+            className="mt-4 clickable"
             type="error"
             title="회원가입 중 오류가 발생했습니다."
             onClick={() => setErrorMsg(null)}
@@ -142,7 +153,7 @@ export default function Register() {
           </MessageBox>
         )}
         <input
-          className="clickable bg-neutral-200 dark:bg-neutral-800 rounded-lg w-full py-3 mt-5"
+          className="clickable bg-neutral-200 dark:bg-neutral-800 rounded-lg w-full py-3 mt-4"
           type="submit"
           value="회원가입"
           disabled={submitDisabled}
