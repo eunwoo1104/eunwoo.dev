@@ -11,8 +11,12 @@ import {
 } from "react-icons/fa";
 import { FaUser, FaUserTag } from "react-icons/fa6";
 import { HiMail, HiOutlineExternalLink } from "react-icons/hi";
-import { IoDocumentLockOutline, IoLanguage } from "react-icons/io5";
-import { MdPassword } from "react-icons/md";
+import {
+  IoDocumentLockOutline,
+  IoDocumentOutline,
+  IoLanguage,
+} from "react-icons/io5";
+import { MdOutlineBorderColor, MdPassword } from "react-icons/md";
 import {
   SiDiscord,
   SiInstagram,
@@ -81,6 +85,8 @@ export const icons = {
   circleCheck: <FaRegCheckCircle />,
   privacy: <IoDocumentLockOutline />,
   code: <FaCode />,
+  color: <MdOutlineBorderColor />,
+  docs: <IoDocumentOutline />,
 
   // Programming Language Logo
   py: <SiPython />,
