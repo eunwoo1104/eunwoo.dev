@@ -10,7 +10,7 @@ export function ExternalLink({
   iconOnRight = false,
 }: ExternalLinkProps) {
   if (!icon) icon = icons.externalLink;
-  let aClassName = "inline-flex justify-center items-baseline hover:opacity-75";
+  let aClassName = "inline-flex justify-center items-baseline clickable";
   if (withGap) aClassName += " gap-x-[3px]";
   if (linkType === "paragraph") aClassName += " underline";
   if (className) aClassName += " " + className;

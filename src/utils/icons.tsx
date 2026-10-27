@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   FaBars,
   FaChevronDown,
@@ -9,12 +10,14 @@ import {
   FaRegCheckCircle,
   FaSun,
 } from "react-icons/fa";
-import { FaUser, FaUserTag } from "react-icons/fa6";
+import { FaLaptopCode, FaUser, FaUserTag } from "react-icons/fa6";
 import { HiMail, HiOutlineExternalLink } from "react-icons/hi";
 import {
   IoDocumentLockOutline,
   IoDocumentOutline,
+  IoHomeSharp,
   IoLanguage,
+  IoSchool,
 } from "react-icons/io5";
 import { MdOutlineBorderColor, MdPassword } from "react-icons/md";
 import {
@@ -87,6 +90,9 @@ export const icons = {
   code: <FaCode />,
   color: <MdOutlineBorderColor />,
   docs: <IoDocumentOutline />,
+  school: <IoSchool />,
+  home: <IoHomeSharp />,
+  cse: <FaLaptopCode />,
 
   // Programming Language Logo
   py: <SiPython />,
@@ -105,6 +111,31 @@ export const icons = {
   ytmusic: <SiYoutubemusic />,
   // Other
   uptime: <SiUptimekuma />,
+};
+
+export const iconsFromImage = (size: number) => {
+  return {
+    gdg: <Image src="/logos/gdg.png" alt="gdg" width={size} height={size} />,
+    koreanlist: (
+      <Image
+        src="/logos/koreanlist.png"
+        alt="koreanlist"
+        width={size}
+        height={size}
+      />
+    ),
+    konkuk: (
+      <Image src="/logos/konkuk.png" alt="konkuk" width={size} height={size} />
+    ),
+    sahmyook: (
+      <Image
+        src="/logos/sahmyook.png"
+        alt="sahmyook"
+        width={size}
+        height={size}
+      />
+    ),
+  };
 };
 
 interface IconLicense {
