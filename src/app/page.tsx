@@ -9,7 +9,7 @@ export default function Home() {
       <HelloWithNextScroll>
         <About />
       </HelloWithNextScroll>
-      <div className="h-80" />
+      <div className="h-24" />
       <div className="">
         <h2 className="text-3xl">Skills</h2>
         <h3 className="text-lg font-light">
@@ -17,11 +17,14 @@ export default function Home() {
         </h3>
         <Skills />
       </div>
+      <div className="h-24" />
       <div>
         <h2 className="text-3xl">Projects</h2>
         <p>insert project box here</p>
       </div>
+      <div className="h-24" />
       <LinksContainer />
+      <div className="h-24" />
     </div>
   );
 }

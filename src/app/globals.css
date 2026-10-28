@@ -19,11 +19,15 @@ body {
   --color-sahmyook-blue: #102C68;
   --color-koreanlist-blue: #3366FF;
   --color-discord-blurple: #5865F2;
+  --color-ete-purple: #7D4AAE;
   --color-python-blue: #3776AB;
   --color-typescript-blue: #3178C6;
   --color-java-orange: #ED8B00;
   --color-react-blue: #087EA4;
   --color-fastapi-mint: #009485;
+  --color-sanic-red: #D90052;
+  --color-mariadb-blue: #003545;
+  --color-mongodb-green: #47A248;
 }
 
 @layer base {

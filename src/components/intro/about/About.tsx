@@ -7,6 +7,8 @@ export function About() {
     <div>
       <h2 className="text-3xl">About me</h2>
       <h4>현재 건국대학교에서 컴퓨터공학을 전공하고 있습니다.</h4>
+      <div className="h-3" />
+      <h3>Education</h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
         <CareerBox
           name="건국대학교 컴퓨터공학부"
@@ -22,7 +24,7 @@ export function About() {
         <CareerBox
           name="삼육대학교 컴퓨터공학부"
           icon={iconsFromImage(20).sahmyook}
-          position="학사"
+          position="2학년 수료"
           startDate="2023.03"
           endDate="2025.02"
           links={[
@@ -30,6 +32,10 @@ export function About() {
             { url: "https://www.syu.ac.kr/cse/", icon: icons.cse },
           ]}
         />
+      </div>
+      <div className="h-3" />
+      <h3>School Clubs</h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
         <CareerBox
           name="GDG On Campus - Konkuk Univ."
           icon={iconsFromImage(20).gdg}
@@ -52,6 +58,23 @@ export function About() {
           ]}
         />
         <CareerBox
+          name="COD36EEK"
+          icon={iconsFromImage(20).cod36eek}
+          position="임원"
+          startDate="2023.09"
+          endDate="2024.08"
+          links={[
+            {
+              url: "https://ctftime.org/team/270620",
+              icon: icons.externalLink,
+            },
+          ]}
+        />
+      </div>
+      <div className="h-3" />
+      <h3>Project Teams</h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <CareerBox
           name="한국 디스코드 리스트"
           icon={
             <div className="bg-koreanlist-blue circle-icon p-[1px]">
@@ -64,6 +87,17 @@ export function About() {
           links={[
             { url: "https://koreanbots.dev/", icon: icons.home },
             { url: "https://github.com/koreanbots", icon: icons.github },
+          ]}
+        />
+        <CareerBox
+          name="Project eTe"
+          icon={iconsFromImage(20).ete}
+          position="개발자"
+          startDate="2021.12"
+          endDate="현재"
+          links={[
+            { url: "https://etebot.io'/", icon: icons.home },
+            { url: "https://github.com/Project-eTe", icon: icons.github },
           ]}
         />
       </div>

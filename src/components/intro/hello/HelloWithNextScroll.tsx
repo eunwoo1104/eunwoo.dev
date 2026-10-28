@@ -21,9 +21,11 @@ export function HelloWithNextScroll({
           }}
         />
         <div className="h-32" />
-        <div ref={nextRef} />
+        <div />
       </div>
-      <div className="scroll-mt-[88px]">{children}</div>
+      <div className="scroll-mt-[88px]" ref={nextRef}>
+        {children}
+      </div>
     </div>
   );
 }

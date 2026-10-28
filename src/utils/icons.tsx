@@ -10,7 +10,13 @@ import {
   FaRegCheckCircle,
   FaSun,
 } from "react-icons/fa";
-import { FaLaptopCode, FaTerminal, FaUser, FaUserTag } from "react-icons/fa6";
+import {
+  FaDatabase,
+  FaLaptopCode,
+  FaTerminal,
+  FaUser,
+  FaUserTag,
+} from "react-icons/fa6";
 import { HiMail, HiOutlineExternalLink } from "react-icons/hi";
 import {
   IoDocumentLockOutline,
@@ -24,6 +30,8 @@ import {
   SiDiscord,
   SiFastapi,
   SiInstagram,
+  SiMariadb,
+  SiMongodb,
   SiNextdotjs,
   SiNotion,
   SiPython,
@@ -96,6 +104,7 @@ export const icons = {
   home: <IoHomeSharp />,
   cse: <FaLaptopCode />,
   terminal: <FaTerminal />,
+  database: <FaDatabase />,
 
   // Programming Language Logo
   py: <SiPython />,
@@ -107,6 +116,8 @@ export const icons = {
   tailwind: <SiTailwindcss />,
   fastapi: <SiFastapi />,
   sanic: <SiSanic />,
+  mariadb: <SiMariadb />,
+  mongodb: <SiMongodb />,
   // Social
   insta: <SiInstagram />,
   linkedin: <FaLinkedin />,
@@ -136,6 +147,15 @@ export const iconsFromImage = (size: number) => {
       <Image
         src="/logos/sahmyook.png"
         alt="sahmyook"
+        width={size}
+        height={size}
+      />
+    ),
+    ete: <Image src="/logos/ete.png" alt="ete" width={size} height={size} />,
+    cod36eek: (
+      <Image
+        src="/logos/cod36eek.png"
+        alt="cod36eek"
         width={size}
         height={size}
       />
