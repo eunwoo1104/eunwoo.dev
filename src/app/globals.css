@@ -14,10 +14,16 @@ body {
   --color-neutral-150: oklch(93.5% 0 none);
   --color-lightcoral: #F08080;
   --color-cornflowerblue: #6495ED;
+  /* Below are brand colors */
   --color-konkuk-green: #005426;
   --color-sahmyook-blue: #102C68;
   --color-koreanlist-blue: #3366FF;
   --color-discord-blurple: #5865F2;
+  --color-python-blue: #3776AB;
+  --color-typescript-blue: #3178C6;
+  --color-java-orange: #ED8B00;
+  --color-react-blue: #087EA4;
+  --color-fastapi-mint: #009485;
 }
 
 @layer base {

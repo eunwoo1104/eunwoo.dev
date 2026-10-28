@@ -5,7 +5,7 @@ import { CareerBox } from "./CareerBox";
 export function About() {
   return (
     <div>
-      <h2>About me</h2>
+      <h2 className="text-3xl">About me</h2>
       <h4>현재 건국대학교에서 컴퓨터공학을 전공하고 있습니다.</h4>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
         <CareerBox

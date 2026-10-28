@@ -63,8 +63,11 @@ export function SiteMenu() {
       )}
       <div className="my-4 divider" />
       <div className="flex flex-col justify-center items-start space-y-0.5">
-        <Link href="/docs" className="flex flex-row clickable gap-x-[3px]">
-          <span className="relative top-[3px]">{icons.docs}</span> 문서
+        <Link
+          href="/docs"
+          className="flex flex-row clickable items-center gap-x-[3px]"
+        >
+          <span>{icons.docs}</span> 문서
         </Link>
         <ExternalLink url="https://status.eunwoo.dev/" icon={icons.uptime}>
           업타임

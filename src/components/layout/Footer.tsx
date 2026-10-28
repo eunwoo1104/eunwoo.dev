@@ -50,16 +50,16 @@ export function Footer() {
         <p className="font-bold">문서</p>
         <Link
           href="/docs/privacy"
-          className="flex flex-row font-light clickable"
+          className="flex flex-row items-center gap-x-[3px] font-light clickable"
         >
-          <span className="relative top-[3px] mr-1">{icons.privacy}</span>{" "}
+          <span className="relative -top-[1px]">{icons.privacy}</span>{" "}
           개인정보처리방침
         </Link>
         <Link
           href="/docs/open-source"
-          className="flex flex-row font-light clickable"
+          className="flex flex-row items-center gap-x-[3px] font-light clickable"
         >
-          <span className="relative top-[3px] mr-1">{icons.code}</span> 오픈소스
+          <span className="relative -top-[1px]">{icons.code}</span> 오픈소스
           정보
         </Link>
       </div>

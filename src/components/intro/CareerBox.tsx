@@ -16,8 +16,8 @@ export function CareerBox({
         <div className="flex-1" />
         {links && (
           <div className="flex flex-row items-center space-x-1.5">
-            {links.map((value, index) => (
-              <ExternalLink url={value.url} icon={value.icon} key={index} />
+            {links.map((value, idx) => (
+              <ExternalLink url={value.url} icon={value.icon} key={idx} />
             ))}
           </div>
         )}

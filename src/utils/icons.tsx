@@ -10,7 +10,7 @@ import {
   FaRegCheckCircle,
   FaSun,
 } from "react-icons/fa";
-import { FaLaptopCode, FaUser, FaUserTag } from "react-icons/fa6";
+import { FaLaptopCode, FaTerminal, FaUser, FaUserTag } from "react-icons/fa6";
 import { HiMail, HiOutlineExternalLink } from "react-icons/hi";
 import {
   IoDocumentLockOutline,
@@ -22,11 +22,13 @@ import {
 import { MdOutlineBorderColor, MdPassword } from "react-icons/md";
 import {
   SiDiscord,
+  SiFastapi,
   SiInstagram,
   SiNextdotjs,
   SiNotion,
   SiPython,
   SiReact,
+  SiSanic,
   SiTailwindcss,
   SiTypescript,
   SiUptimekuma,
@@ -93,6 +95,7 @@ export const icons = {
   school: <IoSchool />,
   home: <IoHomeSharp />,
   cse: <FaLaptopCode />,
+  terminal: <FaTerminal />,
 
   // Programming Language Logo
   py: <SiPython />,
@@ -102,6 +105,8 @@ export const icons = {
   github: <FaGithub />,
   react: <SiReact />,
   tailwind: <SiTailwindcss />,
+  fastapi: <SiFastapi />,
+  sanic: <SiSanic />,
   // Social
   insta: <SiInstagram />,
   linkedin: <FaLinkedin />,
