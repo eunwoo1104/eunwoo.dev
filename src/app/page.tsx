@@ -1,7 +1,7 @@
-import { About } from "@/components/intro/About";
-import { HelloWithNextScroll } from "@/components/intro/HelloWithNextScroll";
-import { Skills } from "@/components/intro/Skills";
+import { About } from "@/components/intro/about/About";
+import { HelloWithNextScroll } from "@/components/intro/hello/HelloWithNextScroll";
 import { LinksContainer } from "@/components/intro/links/LinksContainer";
+import { Skills } from "@/components/intro/skills/Skills";
 
 export default function Home() {
   return (

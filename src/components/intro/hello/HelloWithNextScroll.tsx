@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 
-import { Hello } from "@/components/intro/Hello";
+import { Hello } from "./Hello";
 
 export function HelloWithNextScroll({
   children,

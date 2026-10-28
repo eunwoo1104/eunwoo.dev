@@ -1,5 +1,6 @@
-import { SkillBox } from "@/components/intro/SkillBox";
 import { icons } from "@/utils/icons";
+
+import { SkillBox } from "./SkillBox";
 
 export function Skills() {
   // TODO: move these data to database
