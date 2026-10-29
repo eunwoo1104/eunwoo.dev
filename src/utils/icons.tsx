@@ -2,13 +2,16 @@ import Image from "next/image";
 import {
   FaBars,
   FaChevronDown,
+  FaCloud,
   FaCode,
   FaCog,
   FaGithub,
   FaLinkedin,
   FaMoon,
   FaRegCheckCircle,
+  FaServer,
   FaSun,
+  FaTools,
 } from "react-icons/fa";
 import {
   FaDatabase,
@@ -27,9 +30,18 @@ import {
 } from "react-icons/io5";
 import { MdOutlineBorderColor, MdPassword } from "react-icons/md";
 import {
+  SiAkamai,
+  SiCloudflare,
+  SiDatadog,
+  SiDell,
   SiDiscord,
+  SiDocker,
   SiFastapi,
+  SiGit,
+  SiGoogleadsense,
+  SiGoogleanalytics,
   SiInstagram,
+  SiLinux,
   SiMariadb,
   SiMongodb,
   SiNextdotjs,
@@ -39,7 +51,9 @@ import {
   SiSanic,
   SiTailwindcss,
   SiTypescript,
+  SiUbuntu,
   SiUptimekuma,
+  SiVercel,
   SiYoutube,
   SiYoutubemusic,
 } from "react-icons/si";
@@ -105,6 +119,9 @@ export const icons = {
   cse: <FaLaptopCode />,
   terminal: <FaTerminal />,
   database: <FaDatabase />,
+  tools: <FaTools />,
+  server: <FaServer />,
+  cloud: <FaCloud />,
 
   // Programming Language Logo
   py: <SiPython />,
@@ -118,6 +135,13 @@ export const icons = {
   sanic: <SiSanic />,
   mariadb: <SiMariadb />,
   mongodb: <SiMongodb />,
+  git: <SiGit />,
+  ubuntu: <SiUbuntu />,
+  linux: <SiLinux />,
+  cloudflare: <SiCloudflare />,
+  vercel: <SiVercel />,
+  docker: <SiDocker />,
+  datadog: <SiDatadog />,
   // Social
   insta: <SiInstagram />,
   linkedin: <FaLinkedin />,
@@ -127,6 +151,10 @@ export const icons = {
   ytmusic: <SiYoutubemusic />,
   // Other
   uptime: <SiUptimekuma />,
+  dell: <SiDell />,
+  akamai: <SiAkamai />,
+  ganalytics: <SiGoogleanalytics />,
+  gadsense: <SiGoogleadsense />,
 };
 
 export const iconsFromImage = (size: number) => {

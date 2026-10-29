@@ -28,6 +28,16 @@ body {
   --color-sanic-red: #D90052;
   --color-mariadb-blue: #003545;
   --color-mongodb-green: #47A248;
+  --color-git-orange: #F03C2E;
+  --color-dell-blue: #007DB8;
+  --color-ubuntu-orange: #E95420;
+  --color-aws-gray: #232B37;
+  --color-akamai-blue: #0096D6;
+  --color-cloudflare-orange: #F38020;
+  --color-docker-blue: #2496ED;
+  --color-datadog-purple: #632CA6;
+  --color-ganalytics-orange: #E37400;
+  --color-gadsense-blue: #4285F4;
 }
 
 @layer base {
