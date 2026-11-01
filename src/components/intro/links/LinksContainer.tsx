@@ -1,15 +1,13 @@
-import { Suspense } from "react";
-
+import { IntroContainer } from "../IntroContainer";
 import { Links } from "./Links";
 
 export function LinksContainer() {
   return (
-    <div>
-      <h2>Contacts & Links</h2>
-      <p>insert link area comment here</p>
-      <Suspense>
-        <Links />
-      </Suspense>
-    </div>
+    <IntroContainer
+      title="Contacts & Links"
+      subtitle="insert link area comment here"
+    >
+      <Links />
+    </IntroContainer>
   );
 }
