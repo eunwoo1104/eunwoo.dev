@@ -1,6 +1,7 @@
 import { AboutContainer } from "@/components/intro/about/AboutContainer";
 import { HelloWithNextScroll } from "@/components/intro/hello/HelloWithNextScroll";
 import { LinksContainer } from "@/components/intro/links/LinksContainer";
+import { ProjectsContainer } from "@/components/intro/projects/ProjectsContainer";
 import { SkillsContainer } from "@/components/intro/skills/SkillsContainer";
 
 export default function Home() {
@@ -12,10 +13,7 @@ export default function Home() {
       <div className="h-24" />
       <SkillsContainer />
       <div className="h-24" />
-      <div>
-        <h2 className="text-3xl">Projects</h2>
-        <p>insert project box here</p>
-      </div>
+      <ProjectsContainer />
       <div className="h-24" />
       <LinksContainer />
       <div className="h-24" />

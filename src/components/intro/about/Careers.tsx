@@ -10,7 +10,7 @@ export async function Careers() {
   const careers = await getCareers();
 
   return (
-    <div className="flex flex-col space-y-3">
+    <div className="flex flex-col space-y-3 mt-2">
       {Object.entries(careers).map(([title, items], idx) => (
         <div key={idx}>
           <h3>{title}</h3>

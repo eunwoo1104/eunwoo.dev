@@ -10,7 +10,7 @@ export async function Skills() {
   const skills = await getSkills();
 
   return (
-    <div className="flex flex-col space-y-3 w-full">
+    <div className="flex flex-col space-y-3 w-full mt-2">
       {skills.map((value, idx) => (
         <SkillBox key={idx} {...value} />
       ))}
