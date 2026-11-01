@@ -1,4 +1,5 @@
 import { ExternalLink } from "@/components/ExternalLink";
+import type { IntroCareer } from "@/utils/types";
 
 export function CareerBox({
   name,
@@ -29,14 +30,4 @@ export function CareerBox({
   );
 }
 
-interface CareerBoxProps {
-  name: string;
-  icon: React.ReactElement;
-  position: string;
-  startDate: string;
-  endDate: string;
-  links?: {
-    url: string;
-    icon?: React.ReactElement;
-  }[];
-}
+type CareerBoxProps = IntroCareer;

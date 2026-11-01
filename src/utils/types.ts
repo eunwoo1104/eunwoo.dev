@@ -34,3 +34,30 @@ export interface IntroLinkTable {
   url: string;
   external: boolean;
 }
+
+export interface IntroCareer {
+  name: string;
+  icon: React.ReactElement;
+  position: string;
+  startDate: string;
+  endDate: string;
+  links?: CareerLink[];
+}
+
+export interface CareerLink {
+  url: string;
+  icon?: React.ReactElement;
+}
+
+export interface IntroSkill {
+  name: string;
+  items: SkillData[];
+  defaultIcon: React.ReactElement;
+  forceTextColor?: "white" | "black";
+}
+
+export interface SkillData {
+  name: string;
+  color?: string;
+  icon?: React.ReactElement;
+}

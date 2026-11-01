@@ -1,3 +1,5 @@
+import type { IntroSkill } from "@/utils/types";
+
 export function SkillBox({
   name,
   items,
@@ -36,9 +38,4 @@ export function SkillBox({
   );
 }
 
-interface SkillBoxProps {
-  name: string;
-  items: { name: string; color?: string; icon?: React.ReactElement }[];
-  defaultIcon: React.ReactElement;
-  forceTextColor?: "white" | "black";
-}
+type SkillBoxProps = IntroSkill;

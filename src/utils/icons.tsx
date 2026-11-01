@@ -168,6 +168,16 @@ export const iconsFromImage = (size: number) => {
         height={size}
       />
     ),
+    klistBg: (
+      <div className="bg-koreanlist-blue circle-icon p-[1px]">
+        <Image
+          src="/logos/koreanlist.png"
+          alt="koreanlist"
+          width={size - 2}
+          height={size - 2}
+        />
+      </div>
+    ),
     konkuk: (
       <Image src="/logos/konkuk.png" alt="konkuk" width={size} height={size} />
     ),
