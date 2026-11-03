@@ -26,7 +26,7 @@ export default function Login({
 }) {
   const [submitDisabled, setSubmitDisabled] = useState<boolean>(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
-  const [emailUnverified, setEmailUnverified] = useState<boolean>(false);
+  const [errorType, setErrorType] = useState<string | null>(null);
   const {
     register,
     handleSubmit,
@@ -66,10 +66,8 @@ export default function Login({
       });
       const toRedirect = paramRes.redirect || "";
       router.push(`/${toRedirect}`);
-    } else if (response.code === codes.emailUnverified) {
-      setEmailUnverified(true);
-      setSubmitDisabled(false);
     } else {
+      setErrorType(response.code);
       setErrorMsg(response.msg as string);
       setSubmitDisabled(false);
     }
@@ -118,28 +116,41 @@ export default function Login({
           autoComplete="current-password"
           icon={icons.password}
         />
-        {emailUnverified && (
+        {errorType === codes.emailUnverified ? (
           <MessageBox
             className="clickable"
             type="warn"
             title="이메일이 아직 인증되지 않았습니다."
-            onClick={() => setEmailUnverified(false)}
+            onClick={() => setErrorType(null)}
           >
             <p>
               회원가입에 입력한 이메일로 인증 메일을 보냈습니다. 메일 속 링크를
               눌러 인증해주세요.
             </p>
           </MessageBox>
-        )}
-        {errorMsg && (
+        ) : errorType === codes.emailFailed ? (
           <MessageBox
             className="clickable"
-            type="error"
-            title="로그인 중 오류가 발생했습니다."
-            onClick={() => setErrorMsg(null)}
+            type="warn"
+            title="이메일 인증에 실패했습니다."
+            onClick={() => setErrorType(null)}
           >
-            <p>{errorMsg}</p>
+            <p>
+              입력한 이메일로 인증 메일을 보내지 못했습니다. 가입시 입력한
+              이메일로 관리자에게 문의해주세요.
+            </p>
           </MessageBox>
+        ) : (
+          !!errorType && (
+            <MessageBox
+              className="clickable"
+              type="error"
+              title="로그인 중 오류가 발생했습니다."
+              onClick={() => setErrorType(null)}
+            >
+              <p>{errorMsg}</p>
+            </MessageBox>
+          )
         )}
         <input
           className="clickable bg-neutral-200 dark:bg-neutral-800 rounded-lg w-full py-3"

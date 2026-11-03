@@ -10,6 +10,7 @@ export interface User {
 export const enum UserFlags {
   OWNER = 1 << 0,
   EMAIL_UNVERIFIED = 1 << 1,
+  EMAIL_VERIFICATION_FAILED = 1 << 2,
 }
 
 export interface IntroCareer {

@@ -1,7 +1,5 @@
 "use server";
 
-import { randomUUID } from "crypto";
-
 import { headers } from "next/headers";
 import type { InferType } from "yup";
 import { ValidationError } from "yup";
@@ -11,7 +9,7 @@ import { database } from "@/utils/database";
 import { argon2encrypt, argon2verify } from "@/utils/encryption/argon2";
 import { codes } from "@/utils/response";
 import type { ResponseBody } from "@/utils/response";
-import { transporter } from "@/utils/smtp";
+import { sendVerifyEmail, setUserFlag } from "@/utils/serverSideActions";
 import { UserFlags } from "@/utils/types";
 import type { User } from "@/utils/types";
 import { userLoginSchema, userRegistrationSchema } from "@/utils/validation";
@@ -69,12 +67,30 @@ export async function registerUser(
         "id",
       )
       .returning("id");
-    const userId = res[0].id;
+    let userId = res[0].id;
 
-    const mailSent = await sendVerifyEmail(userId, validated.email);
-    if (mailSent.code !== codes.ok) {
-      await database.user().delete().where("id", userId);
-      return { code: codes.unknown, msg: "알 수 없는 오류가 발생했습니다." };
+    // it seems that it sometimes can't return created id
+    // even though mariadb supports, so temporary work in case of failure
+    if (!userId) {
+      const getRes = await database
+        .user()
+        .select("id")
+        .where("email", validated.email);
+      userId = getRes[0].id;
+    }
+
+    try {
+      await sendVerifyEmail(userId, validated.email);
+    } catch {
+      await database
+        .user()
+        .delete()
+        .where("id", userId)
+        .catch(() => {});
+      return {
+        code: codes.unknown,
+        msg: "인증 이메일 준비 중 오류가 발생했습니다. 다시 시도해주세요.",
+      };
     }
 
     return { code: codes.ok };
@@ -134,6 +150,12 @@ export async function loginUser(
       msg: "이메일이 인증되지 않았습니다.",
     };
 
+  if (userData.flags & UserFlags.EMAIL_VERIFICATION_FAILED)
+    return {
+      code: codes.emailFailed,
+      msg: "이메일 인증에 실패했습니다. 가입시 입력한 이메일로 관리자에게 문의해주세요.",
+    };
+
   await createNewSession(userData.id);
 
   const user: User = {
@@ -181,52 +203,12 @@ export async function getCurrentUser(): Promise<ResponseBody<User>> {
   return getUser(Number(userId));
 }
 
-export async function sendVerifyEmail(
-  userId: number,
-  target: string,
-): Promise<ResponseBody<null>> {
-  const uuid = randomUUID();
-
-  await database.emailVerify().insert({
-    user: userId,
-    token: uuid,
-  });
-
-  try {
-    const res = await transporter.sendMail({
-      from: process.env.EMAIL_ADDRESSS ?? process.env.GMAIL_USER,
-      to: target,
-      subject: "eunwoo.dev 이메일 인증",
-      text: `아래 링크를 통해 이메일 인증을 진행해주세요.\nhttps://${process.env.SERVICE_URL}/user/email?uuid=${uuid}`,
-    });
-
-    console.debug(`Email to ${target} with accepted: ${res.accepted}`);
-
-    return { code: codes.ok };
-  } catch (err) {
-    console.error(err);
-
-    await database.emailVerify().delete().where("token", uuid);
-
-    return { code: codes.unknown, msg: "이메일 전송에 실패했습니다." };
-  }
-}
-
 export async function verifyEmail(uuid: string): Promise<ResponseBody<null>> {
   const res = await database.emailVerify().select("user").where("token", uuid);
   if (res.length === 0)
     return { code: codes.validError, msg: "유효하지 않은 인증코드입니다." };
 
-  let flags = 0;
-  const userFlagData = await database
-    .user()
-    .select("flags")
-    .where("id", res[0].user);
-  if (userFlagData.length === 1) flags = userFlagData[0].flags;
-  await database
-    .user()
-    .update({ flags: flags & ~UserFlags.EMAIL_UNVERIFIED })
-    .where("id", res[0].user);
+  await setUserFlag(res[0].user, { unsetFlags: [UserFlags.EMAIL_UNVERIFIED] });
   await database.emailVerify().delete().where("token", uuid);
 
   return { code: codes.ok };

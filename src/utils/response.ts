@@ -7,6 +7,7 @@ export const codes = {
   validError: "VALIDATION_ERROR",
   authError: "AUTHENTICATION_ERROR",
   emailUnverified: "EMAIL_UNVERIFIED",
+  emailFailed: "EMAIL_VERIFICATION_FAILED",
 
   sessionExpired: "SESSION_EXPIRED",
   sessionInvalid: "SESSION_INVALID",
