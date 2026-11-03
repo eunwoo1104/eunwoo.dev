@@ -1,5 +1,4 @@
 import { ExternalLink } from "@/components/ExternalLink";
-import { icons } from "@/utils/icons";
 
 export function ProjectBox({ name, description, links }: ProjectBoxProps) {
   return (

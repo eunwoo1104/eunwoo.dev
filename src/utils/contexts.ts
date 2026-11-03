@@ -8,9 +8,13 @@ export interface SessionContextInterface {
   setUser: (session: User | null) => void;
 }
 
+export interface MessageBoxData extends MessageBoxProps {
+  content?: string;
+}
+
 interface GlobalMessageContextInterface {
-  messages: MessageBoxProps[];
-  addMessage: (content: MessageBoxProps) => void;
+  messages: MessageBoxData[];
+  addMessage: (content: MessageBoxData) => void;
 }
 
 export const SessionContext = createContext<SessionContextInterface | null>(

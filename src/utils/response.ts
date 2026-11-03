@@ -1,9 +1,13 @@
 export const codes = {
   ok: "OK",
+
   unknown: "UNKNOWN_ERROR",
+  notFound: "NOT_FOUND",
+
   validError: "VALIDATION_ERROR",
   authError: "AUTHENTICATION_ERROR",
-  notFound: "NOT_FOUND",
+  emailUnverified: "EMAIL_UNVERIFIED",
+
   sessionExpired: "SESSION_EXPIRED",
   sessionInvalid: "SESSION_INVALID",
 };

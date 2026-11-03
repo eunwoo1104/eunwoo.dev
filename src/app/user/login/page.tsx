@@ -26,6 +26,7 @@ export default function Login({
 }) {
   const [submitDisabled, setSubmitDisabled] = useState<boolean>(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [emailUnverified, setEmailUnverified] = useState<boolean>(false);
   const {
     register,
     handleSubmit,
@@ -52,7 +53,7 @@ export default function Login({
     };
 
     const response = await loginUser(requestBody);
-    if (response.code == codes.ok) {
+    if (response.code === codes.ok) {
       const paramRes = await searchParams;
       // TODO: show success message
       reset();
@@ -65,6 +66,9 @@ export default function Login({
       });
       const toRedirect = paramRes.redirect || "";
       router.push(`/${toRedirect}`);
+    } else if (response.code === codes.emailUnverified) {
+      setEmailUnverified(true);
+      setSubmitDisabled(false);
     } else {
       setErrorMsg(response.msg as string);
       setSubmitDisabled(false);
@@ -114,6 +118,19 @@ export default function Login({
           autoComplete="current-password"
           icon={icons.password}
         />
+        {emailUnverified && (
+          <MessageBox
+            className="clickable"
+            type="warn"
+            title="이메일이 아직 인증되지 않았습니다."
+            onClick={() => setEmailUnverified(false)}
+          >
+            <p>
+              회원가입에 입력한 이메일로 인증 메일을 보냈습니다. 메일 속 링크를
+              눌러 인증해주세요.
+            </p>
+          </MessageBox>
+        )}
         {errorMsg && (
           <MessageBox
             className="clickable"

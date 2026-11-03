@@ -4,21 +4,21 @@ import { motion } from "motion/react";
 import { AnimatePresence } from "motion/react";
 import { useState } from "react";
 
-import type { MessageBoxProps } from "@/components/MessageBox";
 import { MessageBox } from "@/components/MessageBox";
 import { GlobalMessageContext } from "@/utils/contexts";
+import type { MessageBoxData } from "@/utils/contexts";
 
 export function GlobalMessageProvider({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [messages, setMessages] = useState<MessageBoxProps[]>([]);
-  const [currentMessage, setCurrentMessage] = useState<MessageBoxProps | null>(
+  const [messages, setMessages] = useState<MessageBoxData[]>([]);
+  const [currentMessage, setCurrentMessage] = useState<MessageBoxData | null>(
     null,
   );
 
-  const addMessage = (message: MessageBoxProps) => {
+  const addMessage = (message: MessageBoxData) => {
     if (!currentMessage) setCurrentMessage(message);
     else setMessages((prevMessages) => [...prevMessages, message]);
   };
@@ -49,7 +49,13 @@ export function GlobalMessageProvider({
               {...currentMessage}
               className="hover:cursor-pointer"
               onClick={handleMessageClose}
-            />
+            >
+              {currentMessage.content ? (
+                <p>{currentMessage.content}</p>
+              ) : (
+                currentMessage.children
+              )}
+            </MessageBox>
           </motion.div>
         )}
       </AnimatePresence>

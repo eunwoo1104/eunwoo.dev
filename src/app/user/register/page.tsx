@@ -3,7 +3,7 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
 import type { InferType } from "yup";
@@ -12,6 +12,7 @@ import { registerUser } from "@/actions/user";
 import { ExternalLink } from "@/components/ExternalLink";
 import { MessageBox } from "@/components/MessageBox";
 import { Input } from "@/components/form/Input";
+import { GlobalMessageContext } from "@/utils/contexts";
 import { sha256encrypt } from "@/utils/encryption/sha256";
 import { icons } from "@/utils/icons";
 import { codes } from "@/utils/response";
@@ -31,6 +32,7 @@ export default function Register() {
     resolver: yupResolver(clientUserRegistrationSchema),
   });
   const router = useRouter();
+  const globalMsgCtx = useContext(GlobalMessageContext);
 
   const onSubmit: SubmitHandler<
     InferType<typeof clientUserRegistrationSchema>
@@ -47,6 +49,12 @@ export default function Register() {
     const response = await registerUser(requestBody);
     if (response.code == codes.ok) {
       // TODO: show success message & open login menu
+      globalMsgCtx?.addMessage({
+        title: "회원가입 성공!",
+        content: "이메일 인증을 위해 가입하신 이메일을 확인해주세요.",
+        type: "success",
+        icon: icons.circleCheck,
+      });
       reset();
       setSubmitDisabled(false);
       router.push("/");

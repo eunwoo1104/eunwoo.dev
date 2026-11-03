@@ -20,9 +20,26 @@ CREATE TABLE IF NOT EXISTS session (
     FOREIGN KEY (user) REFERENCES user(id) ON DELETE CASCADE
 );
 
+CREATE TABLE IF NOT EXISTS email_verify (
+    user INT UNSIGNED NOT NULL,
+    token CHAR(36),
+    FOREIGN KEY (user) REFERENCES user(id) ON DELETE CASCADE
+);
+
 CREATE TABLE IF NOT EXISTS intro_link (
     name VARCHAR(32) UNIQUE,
     type VARCHAR(32),
     url VARCHAR(128),
-    external BOOLEAN default true
-)
+    external BOOLEAN DEFAULT TRUE
+);
+
+CREATE TABLE IF NOT EXISTS career (
+    idx TINYINT UNSIGNED,
+    name VARCHAR(32),
+    role VARCHAR(32),
+    start_date DATE,
+    end_date DATE NULL DEFAULT NULL,
+    icon VARCHAR(32),
+    iconFromImg BOOLEAN DEFAULT FALSE,
+    icon_size TINYINT UNSIGNED DEFAULT 0
+);

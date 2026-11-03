@@ -1,8 +1,6 @@
 import knex from "knex";
 import "server-only";
 
-import type { IntroLinkTable, SessionTable, UserTable } from "@/utils/types";
-
 const connection = knex({
   client: "mysql2",
   connection: {
@@ -17,7 +15,37 @@ const connection = knex({
 export const database = {
   user: () => connection<UserTable>("user"),
   session: () => connection<SessionTable>("session"),
+  emailVerify: () => connection<EmailVerificationTable>("email_verify"),
   introLink: () => connection<IntroLinkTable>("intro_link"),
 };
+
+export interface UserTable {
+  id: number;
+  email: string;
+  password: string;
+  username: string;
+  nickname: string | null;
+  created_at: Date;
+  flags: number;
+}
+
+export interface SessionTable {
+  refresh_token: string;
+  user: number;
+  device_identifier: string;
+  created_at: Date | null;
+}
+
+export interface EmailVerificationTable {
+  user: number;
+  token: string;
+}
+
+export interface IntroLinkTable {
+  name: string;
+  type: string;
+  url: string;
+  external: boolean;
+}
 
 export default connection;
