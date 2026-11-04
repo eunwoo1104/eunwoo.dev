@@ -44,7 +44,7 @@ import {
   SiLinux,
   SiMariadb,
   SiMongodb,
-  SiNextdotjs,
+  SiNextdotjs, SiNginx,
   SiNotion,
   SiPython,
   SiReact,
@@ -142,6 +142,7 @@ export const icons = {
   vercel: <SiVercel />,
   docker: <SiDocker />,
   datadog: <SiDatadog />,
+  nginx: <SiNginx />,
   // Social
   insta: <SiInstagram />,
   linkedin: <FaLinkedin />,

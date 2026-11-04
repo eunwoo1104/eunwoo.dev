@@ -38,6 +38,7 @@ body {
   --color-datadog-purple: #632CA6;
   --color-ganalytics-orange: #E37400;
   --color-gadsense-blue: #4285F4;
+  --color-nginx-green: #009639;
 }
 
 @layer base {

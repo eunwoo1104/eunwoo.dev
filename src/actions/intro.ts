@@ -132,6 +132,7 @@ export async function getSkills(): Promise<IntroSkill[]> {
     { name: "KVM", icon: icons.linux },
     { name: "Docker", color: "bg-docker-blue", icon: icons.docker },
     { name: "Docker Compose", color: "bg-docker-blue", icon: icons.docker },
+    { name: "NGINX", color: "bg-nginx-green", icon: icons.nginx },
   ];
   const etc = [
     { name: "Git", color: "bg-git-orange", icon: icons.git },
