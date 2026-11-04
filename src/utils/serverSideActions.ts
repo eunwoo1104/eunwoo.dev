@@ -32,6 +32,13 @@ export async function createNewSession(userId: number) {
   const reqHeaders = await headers();
   const devIdent = getDeviceIdentifier(reqHeaders);
 
+  // cleanup identical previous session
+  await database
+    .session()
+    .delete()
+    .where("user", userId)
+    .andWhere("device_identifier", await sha256encrypt(devIdent));
+
   await database.session().insert({
     refresh_token: await sha256encrypt(refreshToken),
     user: userId,
