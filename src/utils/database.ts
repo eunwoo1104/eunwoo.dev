@@ -1,5 +1,6 @@
-import knex from "knex";
 import "server-only";
+
+import knex from "knex";
 
 const connection = knex({
   client: "mysql2",

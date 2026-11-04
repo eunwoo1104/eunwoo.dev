@@ -4,11 +4,11 @@ import { headers } from "next/headers";
 import type { InferType } from "yup";
 import { ValidationError } from "yup";
 
-import { createNewSession } from "@/actions/session";
 import { database } from "@/utils/database";
 import { argon2encrypt, argon2verify } from "@/utils/encryption/argon2";
 import { codes } from "@/utils/response";
 import type { ResponseBody } from "@/utils/response";
+import { createNewSession } from "@/utils/serverSideActions";
 import { sendVerifyEmail, setUserFlag } from "@/utils/serverSideActions";
 import { UserFlags } from "@/utils/types";
 import type { User } from "@/utils/types";

@@ -1,7 +1,8 @@
+import "server-only";
+
 import { SignJWT, jwtVerify } from "jose";
 import type { JWTPayload } from "jose";
 import { JWTExpired } from "jose/errors";
-import "server-only";
 
 const algorithm = process.env.JWT_ALGORITHM || "HS256";
 const loadedSecret = process.env.JWT_SECRET;

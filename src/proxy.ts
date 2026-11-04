@@ -2,11 +2,11 @@ import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-import { createNewSession } from "@/actions/session";
 import { database } from "@/utils/database";
 import { sha256encrypt } from "@/utils/encryption/sha256";
 import { verifyJWT } from "@/utils/jwt";
 import { getDeviceIdentifier } from "@/utils/request";
+import { createNewSession } from "@/utils/serverSideActions";
 
 export async function tryRefreshSession(
   headers: Headers,

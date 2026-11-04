@@ -3,6 +3,8 @@
     "@trivago/prettier-plugin-sort-imports"
   ],
   "importOrder": [
+    "^server-only$",
+    "<SEPARATOR>",
     "<BUILTIN_MODULES>",
     "<SEPARATOR>",
     "<THIRD_PARTY_MODULES>",
