@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
 import type { InferType } from "yup";
 
-import { loginUser } from "@/actions/user";
+import { createSession } from "@/actions/session";
 import { ExternalLink } from "@/components/ExternalLink";
 import { MessageBox } from "@/components/MessageBox";
 import { Input } from "@/components/form/Input";
@@ -52,7 +52,7 @@ export default function Login({
       password: encryptedPassword,
     };
 
-    const response = await loginUser(requestBody);
+    const response = await createSession(requestBody);
     if (response.code === codes.ok) {
       const paramRes = await searchParams;
       // TODO: show success message
