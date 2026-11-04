@@ -73,7 +73,7 @@ export async function sendVerifyEmail(userId: number, target: string) {
     smtpHandler().addMail({
       target: target,
       title: "eunwoo.dev 이메일 인증",
-      content: `아래 링크를 통해 이메일 인증을 진행해주세요.\nhttps://${process.env.SERVICE_URL}/user/email?uuid=${uuid}`,
+      content: `아래 링크를 통해 이메일 인증을 진행해주세요.\nhttps://${process.env.SERVICE_URL}/user/register/email?uuid=${uuid}`,
       failAction: () => {
         // unfortunately Gmail smtp returns success even though email is invalid
         void database
