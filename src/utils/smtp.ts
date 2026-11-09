@@ -1,5 +1,7 @@
 import nodemailer from "nodemailer";
 
+import { tryGlobalEmailRateLimit } from "@/utils/ratelimit/email";
+
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
@@ -56,6 +58,16 @@ class SMTPHandler {
     return this.queue.shift() as MailInQueue;
   }
 
+  private tryRunFunction(func: undefined | (() => void)) {
+    if (!!func) {
+      try {
+        func();
+      } catch (err) {
+        console.error(err);
+      }
+    }
+  }
+
   private async sendMail(mail: MailInQueue) {
     try {
       const res = await transporter.sendMail({
@@ -71,24 +83,12 @@ class SMTPHandler {
       console.error(err);
       if (mail.retryOnFail > 0) {
         if (mail.retryCount >= mail.retryOnFail) {
-          if (!!mail.failAction) {
-            try {
-              mail.failAction();
-            } catch (err) {
-              console.error(err);
-            }
-          }
+          this.tryRunFunction(mail.failAction);
           return;
         }
         mail.retryCount++;
         this.queue.unshift(mail);
-      } else if (!!mail.failAction) {
-        try {
-          mail.failAction();
-        } catch (err) {
-          console.error(err);
-        }
-      }
+      } else this.tryRunFunction(mail.failAction);
     }
   }
 
@@ -106,7 +106,23 @@ class SMTPHandler {
         await this.waitForMail();
         continue;
       }
-      // TODO: add handler for smtp rate limit
+
+      try {
+        const rateLimitRes = await tryGlobalEmailRateLimit(
+          Number(process.env.GMAIL_RATELIMIT) || 400,
+        );
+        if (!rateLimitRes.safe) {
+          await new Promise((resolve) =>
+            setTimeout(resolve, rateLimitRes.timeLeft * 1000),
+          );
+        }
+      } catch (err) {
+        console.error("Failed to check email rate limit");
+        console.error(err);
+        this.queue.unshift(mail);
+        continue;
+      }
+
       await this.sendMail(mail);
       await new Promise((resolve) =>
         setTimeout(resolve, Number(process.env.MAIL_SEND_INTERVAL) || 1000),

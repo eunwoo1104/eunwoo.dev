@@ -26,6 +26,14 @@ CREATE TABLE IF NOT EXISTS email_verify (
     FOREIGN KEY (user) REFERENCES user(id) ON DELETE CASCADE
 );
 
+CREATE TABLE IF NOT EXISTS email_rate_limit (
+    type VARCHAR(32) NOT NULL,  -- "global_email", "register", "password_reset", ...
+    identifier CHAR(64) NOT NULL,  -- SHA256 encrypted user identifier (can be ip, email, etc.)
+    count INT UNSIGNED NOT NULL DEFAULT 0,
+    start_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE KEY uq_rate_limit_key (type, identifier)
+);
+
 CREATE TABLE IF NOT EXISTS intro_link (
     name VARCHAR(32) UNIQUE,
     type VARCHAR(32),
