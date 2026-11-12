@@ -18,5 +18,8 @@ jobs:
       - name: Install Packages
         run: yarn install --immutable --immutable-cache --check-cache
 
-      - name: Check Style
+      - name: Check ESLint
         run: yarn run lint
+
+      - name: Check Style
+        run: yarn run style

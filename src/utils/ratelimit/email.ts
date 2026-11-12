@@ -1,6 +1,6 @@
 import "server-only";
 
-import { database } from "@/utils/database";
+import connection, { database } from "@/utils/database";
 
 export async function getGlobalEmailRateLimitCount(): Promise<{
   count: number;
@@ -13,14 +13,14 @@ export async function getGlobalEmailRateLimitCount(): Promise<{
     .emailRateLimit()
     .select<{ count: number; time_passed: number }[]>(
       "count",
-      database.raw(
+      connection.raw(
         "TIMESTAMPDIFF(SECOND, start_date, CURRENT_TIMESTAMP()) AS time_passed",
       ),
     )
     .where("type", "global_email");
 
   if (res.length === 0 || res[0].time_passed >= oneDay) {
-    await database.raw(
+    await connection.raw(
       `INSERT INTO email_rate_limit(type, identifier) VALUES ('global_email', SHA2('global', 256)) ON DUPLICATE KEY UPDATE start_date=CURRENT_TIMESTAMP(), count=0`,
     );
     count = 0;
@@ -42,7 +42,7 @@ export async function tryGlobalEmailRateLimit(
   // Since email sending is sequential, we can safely increment the count
   await database
     .emailRateLimit()
-    .update({ count: database.raw("count + 1") })
+    .update({ count: connection.raw("count + 1") })
     .where("type", "global_email");
   return { safe: true };
 }

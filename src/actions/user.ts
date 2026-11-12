@@ -6,6 +6,10 @@ import { ValidationError } from "yup";
 
 import { database } from "@/utils/database";
 import { argon2encrypt } from "@/utils/encryption/argon2";
+import { sha256encrypt } from "@/utils/encryption/sha256";
+import { tryUserRateLimit } from "@/utils/ratelimit/user";
+import type { UserRateLimit } from "@/utils/ratelimit/user";
+import { getClientIP, getDeviceIdentifier } from "@/utils/request";
 import { codes } from "@/utils/response";
 import type { ResponseBody } from "@/utils/response";
 import { sendVerifyEmail, setUserFlag } from "@/utils/serverSideActions";
@@ -15,11 +19,32 @@ import { userRegistrationSchema } from "@/utils/validation";
 
 export async function registerUser(
   data: InferType<typeof userRegistrationSchema>,
-): Promise<ResponseBody<string[] | null>> {
+): Promise<ResponseBody<string[] | { resetAfter: number } | null>> {
   if (process.env.LOGIN_ALLOWED != "true") {
     return {
       code: codes.validError,
       msg: "로그인 기능이 비활성화 되었습니다.",
+    };
+  }
+
+  const header = await headers();
+  const devIdent = getDeviceIdentifier(header);
+  const clientIP = getClientIP(header);
+  const rateLimitData: UserRateLimit = {
+    type: "register",
+    identifier: await sha256encrypt(devIdent + "," + clientIP),
+    maxAllowed: 2,
+    resetAfter: 24 * 60 * 60, // 24H
+  };
+
+  const rateLimitRes = await tryUserRateLimit(rateLimitData);
+  if (!rateLimitRes.safe) {
+    return {
+      code: codes.rateLimited,
+      msg: "회원가입을 너무 많이 시도했습니다. 나중에 시도해주세요.",
+      data: {
+        resetAfter: rateLimitRes.resetAfter,
+      },
     };
   }
 

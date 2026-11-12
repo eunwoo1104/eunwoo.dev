@@ -22,8 +22,6 @@ export const database = {
 
   dateNow: () => connection.raw("CURRENT_TIMESTAMP()"),
   dateYesterday: () => connection.raw("SUBDATE(CURRENT_TIMESTAMP(), 1)"),
-
-  raw: (query: string) => connection.raw(query),
 };
 
 export interface UserTable {
