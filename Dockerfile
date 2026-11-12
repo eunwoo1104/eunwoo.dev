@@ -2,14 +2,14 @@ FROM node:26-slim
 
 WORKDIR /usr/src/app
 
-COPY package.json ./
-COPY yarn.lock ./
+COPY package.json yarn.lock ./
 
 RUN npm install -g yarn
-RUN yarn install
 
-COPY . .
+RUN yarn install --frozen-lockfile --production=true && yarn cache clean
 
-RUN yarn run build
+COPY next.config.ts ./
+COPY public ./public
+COPY .next ./.next
 
 CMD ["yarn", "run", "start"]

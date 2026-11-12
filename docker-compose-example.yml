@@ -1,0 +1,23 @@
+services:
+  mariadb:
+    image: mariadb:11.8
+    container_name: eunwoodev-mariadb
+    hostname: mariadb
+    restart: always
+    volumes:
+      - "./data/mariadb:/var/lib/mysql"
+      - "./sql:/docker-entrypoint-initdb.d"
+    env_file:
+      - .env
+    command:
+      - "--innodb-ft-min-token-size=2"
+  web:
+    container_name: eunwoodev
+    image: ghcr.io/eunwoo1104/eunwoo.dev:latest
+    restart: always
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    depends_on:
+      - mariadb
