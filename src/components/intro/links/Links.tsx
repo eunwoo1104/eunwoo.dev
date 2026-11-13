@@ -1,24 +1,24 @@
 import { connection } from "next/server";
 
+import { getLinks } from "@/actions/intro";
 import { ExternalLink } from "@/components/ExternalLink";
-import { database } from "@/utils/database";
 import { icons } from "@/utils/icons";
 
 export async function Links() {
   await connection();
 
-  const links = await database.introLink().select();
+  const links = await getLinks();
 
   return (
     <div>
       {links.length ? (
-        links.map((link) => (
+        links.map((value, idx) => (
           <ExternalLink
-            url={link.url}
-            key={link.name}
-            icon={icons[link.type as keyof typeof icons] || icons.externalLink}
+            url={value.url}
+            key={idx}
+            icon={value.icon || icons.externalLink}
           >
-            {link.name}
+            {value.name}
           </ExternalLink>
         ))
       ) : (

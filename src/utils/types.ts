@@ -1,3 +1,5 @@
+import type { icons } from "@/utils/icons";
+
 export interface User {
   id: number;
   email: string;
@@ -38,4 +40,11 @@ export interface SkillData {
   name: string;
   color?: string;
   icon?: React.ReactElement;
+}
+
+export interface IntroLink {
+  name: string;
+  url: string;
+  icon?: React.ReactElement;
+  external?: boolean;
 }

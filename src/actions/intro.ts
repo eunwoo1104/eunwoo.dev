@@ -1,7 +1,7 @@
 "use server";
 
 import { icons, iconsFromImage } from "@/utils/icons";
-import type { IntroCareer, IntroSkill } from "@/utils/types";
+import type { IntroCareer, IntroLink, IntroSkill } from "@/utils/types";
 
 // TODO: fetch all of these data from database
 
@@ -184,6 +184,16 @@ export async function getSkills(): Promise<IntroSkill[]> {
       items: etc,
       defaultIcon: icons.tools,
       forceTextColor: "white",
+    },
+  ];
+}
+
+export async function getLinks(): Promise<IntroLink[]> {
+  return [
+    {
+      name: "Résumé (Unfinished)",
+      url: "https://eunwoo1104.notion.site/R-sum-7b57411059be49169cfb3ca530693cf3?pvs=4",
+      icon: icons.notion,
     },
   ];
 }
