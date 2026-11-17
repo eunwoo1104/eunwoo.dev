@@ -35,10 +35,12 @@ export default async function DashboardLayout({
     );
   }
   return (
-    <div>
+    <div className="h-full">
       <h1>대시보드</h1>
-      <Navigator />
-      <div className="mt-4 ml-32">{children}</div>
+      <div className="flex flex-row space-x-5 mt-5 w-full h-[calc(100dvh-88px-13rem)]">
+        <Navigator />
+        <div className="flex-1 overflow-y-auto">{children}</div>
+      </div>
     </div>
   );
 }

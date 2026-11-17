@@ -47,7 +47,7 @@ export function GlobalMessageProvider({
           >
             <MessageBox
               {...currentMessage}
-              className="hover:cursor-pointer"
+              className="hover:cursor-pointer content-w-limit"
               onClick={handleMessageClose}
             >
               {currentMessage.content ? (

@@ -12,7 +12,7 @@ export function Navigator() {
   };
 
   return (
-    <div className="flex flex-col items-center rounded-md level-2-bg text-xl font-semibold w-28 p-2 h-[calc(100dvh-18rem)] fixed top-36 left-0 z-10 content-ml">
+    <div className="flex flex-col items-center rounded-md level-2-bg text-xl font-semibold w-28 p-2">
       {Object.entries(paths).map(([path, name]) => (
         <Link
           key={path}
