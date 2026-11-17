@@ -56,6 +56,20 @@ export function GlobalMessageProvider({
                 currentMessage.children
               )}
             </MessageBox>
+            <div className="flex flex-row mt-2 content-w-limit">
+              {messages.length > 0 && (
+                <div className="level-2-bg rounded-lg p-2 text-sm font-light">
+                  추가 메시지 {messages.length}개 남음
+                </div>
+              )}
+              <div className="flex-1" />
+              <div
+                className="level-2-bg rounded-lg p-2 text-sm hover:cursor-pointer"
+                onClick={handleMessageClose}
+              >
+                클릭하여 닫기
+              </div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
