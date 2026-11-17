@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { connection } from "next/server";
 
 import { getCurrentUser } from "@/actions/user";
+import { Navigator } from "@/components/dashboard/Navigator";
 import { UserFlags } from "@/utils/types";
 
 // Since user data must be loaded for checking permissions,
@@ -33,5 +34,11 @@ export default async function DashboardLayout({
       </div>
     );
   }
-  return <div>{children}</div>;
+  return (
+    <div>
+      <h1>대시보드</h1>
+      <Navigator />
+      <div className="mt-4 ml-32">{children}</div>
+    </div>
+  );
 }

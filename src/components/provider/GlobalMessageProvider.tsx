@@ -43,7 +43,7 @@ export function GlobalMessageProvider({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -30 }}
             transition={{ duration: 0.1 }}
-            className="fixed top-[90px] w-full content-px"
+            className="fixed top-[90px] w-full content-px z-50"
           >
             <MessageBox
               {...currentMessage}

@@ -1,3 +1,7 @@
 export default async function Dashboard() {
-  return <div>TBA</div>;
+  return (
+    <div>
+      <h2>홈</h2>
+    </div>
+  );
 }

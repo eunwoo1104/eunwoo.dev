@@ -7,7 +7,9 @@ import {
   FaCog,
   FaGithub,
   FaLinkedin,
+  FaMinus,
   FaMoon,
+  FaPlus,
   FaRegCheckCircle,
   FaServer,
   FaSun,
@@ -20,7 +22,7 @@ import {
   FaUser,
   FaUserTag,
 } from "react-icons/fa6";
-import { HiMail, HiOutlineExternalLink } from "react-icons/hi";
+import { HiMail, HiOutlineExternalLink, HiOutlineTag } from "react-icons/hi";
 import {
   IoDocumentLockOutline,
   IoDocumentOutline,
@@ -123,6 +125,9 @@ export const icons = {
   tools: <FaTools />,
   server: <FaServer />,
   cloud: <FaCloud />,
+  plus: <FaPlus />,
+  minus: <FaMinus />,
+  tag: <HiOutlineTag />,
 
   // Programming Language Logo
   py: <SiPython />,

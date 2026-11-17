@@ -14,6 +14,7 @@ export function Input<T extends FieldValues>({
   required,
   placeholder,
   autoComplete,
+  defaultValue,
   icon = null,
 }: InputProps<T>) {
   return (
@@ -29,6 +30,7 @@ export function Input<T extends FieldValues>({
         type={type}
         placeholder={placeholder}
         autoComplete={autoComplete}
+        defaultValue={defaultValue}
         {...register(name, { required: required })}
       />
     </Label>
@@ -40,6 +42,7 @@ interface InputProps<
 > extends LabelProps<TFieldValues> {
   type: React.HTMLInputTypeAttribute;
   register: UseFormRegister<TFieldValues>;
+  defaultValue?: string | number;
   placeholder?: string;
   autoComplete?: React.HTMLInputAutoCompleteAttribute;
 }

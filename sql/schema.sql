@@ -35,9 +35,10 @@ CREATE TABLE IF NOT EXISTS email_rate_limit (
 );
 
 CREATE TABLE IF NOT EXISTS intro_link (
+    idx TINYINT UNSIGNED NOT NULL,
     name VARCHAR(32) UNIQUE,
-    type VARCHAR(32),
     url VARCHAR(128),
+    icon VARCHAR(32),
     external BOOLEAN DEFAULT TRUE
 );
 

@@ -54,9 +54,10 @@ export interface EmailRateLimitTable {
 }
 
 export interface IntroLinkTable {
+  idx: number;
   name: string;
-  type: string;
   url: string;
+  icon: string;
   external: boolean;
 }
 

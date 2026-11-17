@@ -116,6 +116,10 @@ body {
     @apply mx-8 md:mx-20 lg:mx-44 xl:mx-52 2xl:mx-64;
   }
 
+  .content-ml {
+    @apply ml-8 md:ml-20 lg:ml-44 xl:ml-52 2xl:ml-64;
+  }
+
   .content-px {
     @apply px-8 md:px-20 lg:px-44 xl:px-52 2xl:px-64;
   }

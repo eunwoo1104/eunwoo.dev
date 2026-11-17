@@ -46,3 +46,9 @@ export const clientUserLoginSchema = Yup.object({
     .min(8, "비밀번호는 최소 8자 이상이어야 합니다.")
     .required("비밀번호를 입력해주세요."),
 });
+
+export const introLinkUpdateSchema = Yup.object({
+  name: Yup.string().required("링크 이름을 입력해주세요."),
+  url: Yup.string().url().required("링크를 입력해주세요."),
+  icon: Yup.string().required("아이콘을 선택해주세요."),
+});
