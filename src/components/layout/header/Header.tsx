@@ -51,37 +51,46 @@ export function Header() {
   }, [pathname]);
 
   return (
-    <div>
+    <>
       <header
-        className="fixed top-0 left-0 right-0 z-30 content-px py-6
-                   flex flex-row items-center transition-colors duration-300
+        className="fixed top-0 left-0 right-0 z-30 content-px py-6 transition-colors duration-300
                    before:absolute before:inset-0 before:-z-10 before:backdrop-blur-xs before:mask-[linear-gradient(to_bottom,black_65%,transparent)]"
       >
-        <Link href="/" className="font-bold text-2xl clickable rounded-lg py-1">
-          eunwoo.dev
-        </Link>
-        <div className="flex-1" />
-        <div
-          className="flex flex-row justify-center items-center space-x-3"
-          ref={menuButtonsRef}
-        >
-          <HeaderButton onClick={() => changeMenuOpen("setting")}>
-            {icons.setting}
-          </HeaderButton>
-          <HeaderButton onClick={() => changeMenuOpen("site")}>
-            {icons.list}
-          </HeaderButton>
+        <div className="flex flex-row items-center content-w-limit">
+          <Link
+            href="/"
+            className="font-bold text-2xl clickable rounded-lg py-1"
+          >
+            eunwoo.dev
+          </Link>
+          <div className="flex-1" />
+          <div
+            className="flex flex-row justify-center items-center space-x-3"
+            ref={menuButtonsRef}
+          >
+            <HeaderButton onClick={() => changeMenuOpen("setting")}>
+              {icons.setting}
+            </HeaderButton>
+            <HeaderButton onClick={() => changeMenuOpen("site")}>
+              {icons.list}
+            </HeaderButton>
+          </div>
         </div>
       </header>
-      <div ref={menuRef}>
-        <AnimatePresence>
-          {openMenu === "setting" ? (
-            <SettingMenu />
-          ) : openMenu === "site" ? (
-            <SiteMenu />
-          ) : null}
-        </AnimatePresence>
+      <div
+        className="fixed top-0 right-0 left-0 content-mx mt-19"
+        ref={menuRef}
+      >
+        <div className="flex justify-end content-w-limit">
+          <AnimatePresence>
+            {openMenu === "setting" ? (
+              <SettingMenu />
+            ) : openMenu === "site" ? (
+              <SiteMenu />
+            ) : null}
+          </AnimatePresence>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

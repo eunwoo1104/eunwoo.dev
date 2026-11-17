@@ -38,7 +38,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <GlobalMessageProvider>
             <Header />
             <div className="content-pt content-px min-h-[calc(100dvh-7rem)]">
-              {children}
+              <div className="content-w-limit">{children}</div>
             </div>
             <Footer />
           </GlobalMessageProvider>

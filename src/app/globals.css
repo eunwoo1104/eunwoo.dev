@@ -124,6 +124,10 @@ body {
     @apply px-8 md:px-20 lg:px-44 xl:px-52 2xl:px-64;
   }
 
+  .content-w-limit {
+    @apply mx-auto max-w-[100rem];
+  }
+
   .level-1-bg {
     @apply bg-white dark:bg-neutral-900 dark:text-white;
   }
